@@ -12,7 +12,6 @@ import com.fdmgroup.chocolatestore.singleton.ContextSingleton;
 @Controller
 public class CSController {
 
-	ApplicationContext context = ContextSingleton.getSpring();
 	
 	@RequestMapping("/")
 	public String goToHome() {
@@ -20,23 +19,10 @@ public class CSController {
 		return "csFrontPage";
 	}
 	
+
 	
-	public void updateInventory(String name, int amount){
-		ProductDAO dao = (ProductDAO) context.getBean("ProductDAO");
-		
-		try {// TODO Find out how many units were purchased and subtract then update the product inventory
-			Product product = dao.read(name);
-			if(product.getStockAmount()<amount){
-				//redirect to insufficent quantity page
-			}
-			
-			else{
-				newProduct=
-			}
-		} catch (StorableNotFoundException e) {
-			
-			e.printStackTrace();
-		}
-	}
+	
+
+	
 	
 }
