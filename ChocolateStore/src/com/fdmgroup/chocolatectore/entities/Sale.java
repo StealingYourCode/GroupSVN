@@ -1,9 +1,24 @@
 package com.fdmgroup.chocolatectore.entities;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 /**
@@ -24,7 +39,7 @@ public class Sale implements Serializable {
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="SALE_DATE")
-	private Date saleDate;
+	private Calendar saleDate;
 
 	//bi-directional many-to-one association to ProductSale
 	@OneToMany(mappedBy="sale")
@@ -46,11 +61,11 @@ public class Sale implements Serializable {
 		this.salesId = salesId;
 	}
 
-	public Date getSaleDate() {
+	public Calendar getSaleDate() {
 		return this.saleDate;
 	}
 
-	public void setSaleDate(Date saleDate) {
+	public void setSaleDate(Calendar saleDate) {
 		this.saleDate = saleDate;
 	}
 

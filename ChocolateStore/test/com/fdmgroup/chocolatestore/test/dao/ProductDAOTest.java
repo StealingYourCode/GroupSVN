@@ -92,4 +92,18 @@ public class ProductDAOTest {
 		}
 	}
 	
+	@Test 
+	public void testProductDeleteTest(){
+		try {
+			dao.delete(12);
+			assertTrue(dao.read(12).equals(null));
+		} catch (StorableNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NullInputException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 }
