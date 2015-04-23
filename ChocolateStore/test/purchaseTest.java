@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import javax.transaction.Transactional;
+
 import org.junit.Test;
 
 import com.fdmgroup.chocolatestore.dao.ProductDAO;
@@ -11,6 +13,7 @@ import com.fdmgroup.springmvc.BusinessLogic;
 public class purchaseTest {
 
 	@Test
+	@Transactional
 	public void testAfterPurchaseInventory(){
 		BusinessLogic bl = new BusinessLogic();
 		ProductDAO dao = new ProductDAO();

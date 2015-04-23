@@ -36,7 +36,6 @@ public class BusinessLogic {
 		productCopy.setDescription(product.getDescription());
 		productCopy.setProductName(product.getProductName());
 		productCopy.setPrice(product.getPrice());
-		productCopy.setProductSales(product.getProductSales());
 		productCopy.setStockAmount(product.getStockAmount());
 		
 		return productCopy;
