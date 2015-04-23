@@ -54,6 +54,9 @@ public class ProductDAO implements IStorage<Product, Integer> {
 		EntityManager em = emf.createEntityManager();
 
 		Product result = em.find(Product.class, oldProduct.getProductId());
+		
+		if (result==null)
+			throw new StorableNotFoundException("This product does not exist");
 
 		em.getTransaction().begin();
 		result.setDescription(newProduct.getDescription());
@@ -68,9 +71,14 @@ public class ProductDAO implements IStorage<Product, Integer> {
 
 	@Override
 	public void delete(Integer i)throws StorableNotFoundException {
+		
+		
 		EntityManagerFactory emf = EMFSingleton.getInstance();
 		EntityManager em = emf.createEntityManager();
 		Product product = em.find(Product.class, i);
+		
+		if (product==null)
+			throw new StorableNotFoundException("This product does not exist");
 		
 		em.getTransaction().begin();
 		em.remove(product);

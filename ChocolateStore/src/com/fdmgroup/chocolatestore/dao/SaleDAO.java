@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 import com.fdmgroup.chocolatectore.entities.Sale;
+import com.fdmgroup.chocolatestore.exceptions.StorableNotFoundException;
 import com.fdmgroup.chocolatestore.interfaces.IStorable;
 import com.fdmgroup.chocolatestore.interfaces.IStorage;
 import com.fdmgroup.chocolatestore.singleton.EMFSingleton;
@@ -11,16 +12,23 @@ import com.fdmgroup.chocolatestore.singleton.EMFSingleton;
 public class SaleDAO implements IStorage<Sale, Integer>{
 
 	@Override
-	public Sale read(Integer id) {
+	public Sale read(Integer id) throws StorableNotFoundException {
 		EntityManagerFactory emf = EMFSingleton.getInstance();
 		EntityManager em = emf.createEntityManager();
 		
 		Sale sale = em.find(Sale.class, id);
+		
+		if(sale==null)
+			throw new StorableNotFoundException("This sale was not found");
 		return sale;
 	}
 
 	@Override
-	public Sale create(Sale sale) {
+	public Sale create(Sale sale) throws StorableNotFoundException {
+		
+		if(sale==null)
+			throw new StorableNotFoundException("This sale was not found");
+		
 		EntityManagerFactory emf = EMFSingleton.getInstance();
 		EntityManager em = emf.createEntityManager();
 		
@@ -32,7 +40,11 @@ public class SaleDAO implements IStorage<Sale, Integer>{
 	}
 
 	@Override
-	public Sale update(Sale oldSale, Sale newSale) {
+	public Sale update(Sale oldSale, Sale newSale) throws StorableNotFoundException {
+		
+		if(oldSale==null|| newSale==null)
+			throw new StorableNotFoundException("This sale was not found");
+		
 		EntityManagerFactory emf = EMFSingleton.getInstance();
 		EntityManager em = emf.createEntityManager();
 		
@@ -47,8 +59,19 @@ public class SaleDAO implements IStorage<Sale, Integer>{
 	}
 
 	@Override
-	public void delete(Integer i) {
-		// TODO Auto-generated method stub
+	public void delete(Integer id) throws StorableNotFoundException {
+		EntityManagerFactory emf = EMFSingleton.getInstance();
+		EntityManager em = emf.createEntityManager();
+		
+		Sale sale = em.find(Sale.class, id);
+		
+		if(sale==null)
+			throw new StorableNotFoundException("This sale was not found");
+		
+		em.getTransaction().begin();
+		em.remove(sale);
+		em.getTransaction().commit();
+	
 	}
 
 	
