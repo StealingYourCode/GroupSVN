@@ -8,7 +8,7 @@ public class CSController {
 
 	@RequestMapping("/")
 	public String goToHome() {
-		return "csfrontPage";
+		return "csFrontPage";
 	}
 	
 }
