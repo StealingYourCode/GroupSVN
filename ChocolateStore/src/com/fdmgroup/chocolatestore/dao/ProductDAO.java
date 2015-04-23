@@ -22,6 +22,7 @@ public class ProductDAO implements IStorage<Product, Integer> {
 
 		return product;
 	}
+	
 
 	@Override
 	public Product create(Product product) {
