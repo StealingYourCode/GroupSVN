@@ -7,28 +7,28 @@ import com.fdmgroup.chocolatestore.interfaces.IStorage;
 public class SaleDAO implements IStorage<Sale, Integer>{
 
 	@Override
-	public IStorable read(Integer i) {
+	public Sale read(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public IStorable create(Sale t) {
+	public Sale create(Sale t) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public IStorable update(Sale t, Sale a) {
+	public Sale update(Sale t, Sale a) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public IStorable delete(Integer i) {
+	public void delete(Integer i) {
 		// TODO Auto-generated method stub
-		return null;
 	}
 
+	
 	
 }

@@ -2,11 +2,11 @@ package com.fdmgroup.chocolatestore.interfaces;
 
 public interface IStorage <T, I> {
 
-	public IStorable read(I i);
+	public T read(I i);
 	
-	public IStorable create(T t);
+	public T create(T t);
 	
-	public IStorable update(T t, T a);
+	public T update(T t, T a);
 	
-	public IStorable delete(I i);
+	public void delete(I i);
 }
