@@ -58,3 +58,9 @@ public class ProductSale implements Serializable {
 	}
 
 }
+
+@Embeddable
+class MyKey {
+	Product product;
+	Sale sale;
+}
