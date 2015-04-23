@@ -10,10 +10,12 @@ import com.fdmgroup.chocolatestore.interfaces.IStorage;
 
 public class SaleDAO extends SuperDAO implements  IStorage<Sale, Integer>{
 
+	EntityManager em;
+	
 	@Override
 	public Sale read(Integer id) throws StorableNotFoundException {
 		
-		
+		em = emf.createEntityManager();
 		Sale sale = em.find(Sale.class, id);
 		
 		if(sale==null)
@@ -26,7 +28,7 @@ public class SaleDAO extends SuperDAO implements  IStorage<Sale, Integer>{
 		
 		if(sale==null)
 			throw new StorableNotFoundException("This sale was not found");
-		
+		em = emf.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(sale);
 		em.getTransaction().commit();
@@ -41,7 +43,7 @@ public class SaleDAO extends SuperDAO implements  IStorage<Sale, Integer>{
 			throw new StorableNotFoundException("This sale was not found");
 		
 		
-		
+		em = emf.createEntityManager();
 		Sale result = em.find(Sale.class, oldSale.getSalesId());
 		em.getTransaction().begin();
 		result.setProductSales(newSale.getProductSales());
@@ -54,7 +56,7 @@ public class SaleDAO extends SuperDAO implements  IStorage<Sale, Integer>{
 
 	@Override
 	public void delete(Integer id) throws StorableNotFoundException {
-		
+		em = emf.createEntityManager();
 		Sale sale = em.find(Sale.class, id);
 		
 		if(sale==null)

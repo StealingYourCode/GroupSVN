@@ -19,14 +19,14 @@ public class Product implements Serializable {
 
 	@Id
 	
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="PRODUCT_ID_SEQ")
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="PRODUCT_ID_SEQ")
 	@SequenceGenerator(name="PRODUCT_ID_SEQ", sequenceName="PRODUCT_ID_SEQ")
 	@Column(name="PRODUCT_ID")
 	private Integer productId;
 
 	private String description;
-
-	private String name;
+	@Column(name="PRODUCT_NAME")
+	private String productName;
 
 	private BigDecimal price;
 
@@ -41,7 +41,7 @@ public class Product implements Serializable {
 	}
 
 	public Product(String name, BigDecimal price, Integer qty, String description) {
-		this.name = name;
+		this.productName = name;
 		this.price = price;
 		this.stockAmount = qty;
 		this.description = description;
@@ -64,11 +64,11 @@ public class Product implements Serializable {
 	}
 
 	public String getName() {
-		return this.name;
+		return this.productName;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.productName = name;
 	}
 
 	public BigDecimal getPrice() {

@@ -1,21 +1,17 @@
 package com.fdmgroup.chocolatestore.dao;
 
-import java.sql.ResultSet;
-
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 
 import com.fdmgroup.chocolatectore.entities.User;
 import com.fdmgroup.chocolatestore.exceptions.StorableNotFoundException;
-import com.fdmgroup.chocolatestore.interfaces.IStorable;
 import com.fdmgroup.chocolatestore.interfaces.IStorage;
-import com.fdmgroup.chocolatestore.singleton.EMFSingleton;
 
 public class UserDAO extends SuperDAO implements IStorage<User, Integer>{
 
+	EntityManager em;
 	@Override
 	public User read(Integer id) throws StorableNotFoundException {
-		
+		em = emf.createEntityManager();
 		User user = em.find(User.class, id);
 		
 		if(user==null)
@@ -27,7 +23,7 @@ public class UserDAO extends SuperDAO implements IStorage<User, Integer>{
 	@Override
 	public User create(User user) throws StorableNotFoundException{
 
-		
+		em = emf.createEntityManager();
 		if(user==null)
 			throw new StorableNotFoundException("This user was not found");
 		
@@ -40,7 +36,7 @@ public class UserDAO extends SuperDAO implements IStorage<User, Integer>{
 
 	@Override
 	public User update(User oldUser, User newUser)throws StorableNotFoundException {
-		
+		em = emf.createEntityManager();
 		if(oldUser==null || newUser==null)
 			throw new StorableNotFoundException("This user was not found");
 		
@@ -57,7 +53,7 @@ public class UserDAO extends SuperDAO implements IStorage<User, Integer>{
 		
 	}
 	public void delete(Integer id) throws StorableNotFoundException{
-		
+		em = emf.createEntityManager();
 		User user = em.find(User.class, id);
 		
 		if(user==null)

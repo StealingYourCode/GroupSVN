@@ -3,24 +3,22 @@ package com.fdmgroup.chocolatestore.dao;
 import java.util.ArrayList;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
 import com.fdmgroup.chocolatectore.entities.Product;
 import com.fdmgroup.chocolatestore.exceptions.NullInputException;
 import com.fdmgroup.chocolatestore.exceptions.StorableNotFoundException;
-import com.fdmgroup.chocolatestore.interfaces.IStorable;
 import com.fdmgroup.chocolatestore.interfaces.IStorage;
-import com.fdmgroup.chocolatestore.singleton.EMFSingleton;
 
 public class ProductDAO extends SuperDAO implements IStorage<Product, Integer> {
 
+	EntityManager em;
 	@Override
 	public Product read(Integer id) throws StorableNotFoundException, NullInputException {
 		
 		if(id==null)
 			throw new NullInputException("The input cannot be null");
-
+		em = emf.createEntityManager();
 		Product product = em.find(Product.class, id);
 		
 		if(product==null)
@@ -33,11 +31,11 @@ public class ProductDAO extends SuperDAO implements IStorage<Product, Integer> {
 	@Override
 	public Product create(Product product)throws StorableNotFoundException{
 		
-
+		em = emf.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(product);
 		em.getTransaction().commit();
-		
+		em.close();
 		if(product==null)
 			throw new StorableNotFoundException("This product was not found");
 		
@@ -47,7 +45,7 @@ public class ProductDAO extends SuperDAO implements IStorage<Product, Integer> {
 	@Override
 	public Product update(Product oldProduct, Product newProduct)throws StorableNotFoundException{
 		
-
+		em = emf.createEntityManager();
 		Product result = em.find(Product.class, oldProduct.getProductId());
 		
 		if (result==null)
@@ -66,7 +64,7 @@ public class ProductDAO extends SuperDAO implements IStorage<Product, Integer> {
 
 	@Override
 	public void delete(Integer i)throws StorableNotFoundException {
-		
+		em = emf.createEntityManager();
 		Product product = em.find(Product.class, i);
 		
 		if (product==null)
