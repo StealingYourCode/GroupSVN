@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name="PRODUCT_SALES")
-
+@IdClass(MyKey.class)
 @NamedQuery(name="ProductSale.findAll", query="SELECT p FROM ProductSale p")
 public class ProductSale implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -59,8 +59,12 @@ public class ProductSale implements Serializable {
 
 }
 
-@Embeddable
-class MyKey {
+
+class MyKey implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Product product;
 	Sale sale;
 }

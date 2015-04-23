@@ -1,7 +1,9 @@
 package com.fdmgroup.chocolatectore.entities;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -16,10 +18,11 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="PRODUCT_PRODUCTID_GENERATOR", sequenceName="PRODUCT_ID_SEQ")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="PRODUCT_PRODUCTID_GENERATOR")
+	
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="PRODUCT_ID_SEQ")
+	@SequenceGenerator(name="PRODUCT_ID_SEQ", sequenceName="PRODUCT_ID_SEQ")
 	@Column(name="PRODUCT_ID")
-	private long productId;
+	private Integer productId;
 
 	private String description;
 
@@ -37,11 +40,11 @@ public class Product implements Serializable {
 	public Product() {
 	}
 
-	public long getProductId() {
+	public Integer getProductId() {
 		return this.productId;
 	}
 
-	public void setProductId(long productId) {
+	public void setProductId(Integer productId) {
 		this.productId = productId;
 	}
 
