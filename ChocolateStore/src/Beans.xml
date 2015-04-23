@@ -22,6 +22,7 @@
 	
 	<bean id="User" class="com.fdmgroup.chocolatectore.entities.User"/>
 	<bean id="Product" class="com.fdmgroup.chocolatectore.entities.Product"/>
+	<bean id="ProductSale" class="com.fdmgroup.chocolatectore.entities.ProductSale"/>
 
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 	

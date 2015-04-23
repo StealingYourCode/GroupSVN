@@ -4,14 +4,19 @@ import org.springframework.context.ApplicationContext;
 
 import com.fdmgroup.chocolatectore.entities.Product;
 import com.fdmgroup.chocolatestore.dao.ProductDAO;
+import com.fdmgroup.chocolatestore.exceptions.NullInputException;
 import com.fdmgroup.chocolatestore.exceptions.StorableNotFoundException;
 import com.fdmgroup.chocolatestore.singleton.ContextSingleton;
 
 public class BusinessLogic {
 	ApplicationContext context = ContextSingleton.getSpring();
 
-	public void updateInventory(String name, int amount){
+	public synchronized void updateInventory(String name, int amount) throws NullInputException{
 		ProductDAO dao = (ProductDAO) context.getBean("ProductDAO");
+		
+		if(amount<0){
+			throw new NullInputException("Amount cannot be less than 0");
+		}
 		
 		try {
 			Product product = dao.read(name);

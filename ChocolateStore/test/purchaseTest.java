@@ -13,15 +13,15 @@ import com.fdmgroup.springmvc.BusinessLogic;
 public class purchaseTest {
 
 	@Test
-	@Transactional
+//	@Transactional
 	public void testAfterPurchaseInventory(){
 		BusinessLogic bl = new BusinessLogic();
 		ProductDAO dao = new ProductDAO();
-		
-		bl.updateInventory("Snickers", 50);
-		
 		try {
-			assertTrue(dao.read(3).getStockAmount()==50);
+		bl.updateInventory("Snickers", 5);
+		
+		
+			assertTrue(dao.read(3).getStockAmount()==45);
 		} catch (StorableNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
