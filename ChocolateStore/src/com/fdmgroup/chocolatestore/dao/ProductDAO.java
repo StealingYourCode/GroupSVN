@@ -77,7 +77,7 @@ public class ProductDAO implements IStorage<Product, Integer> {
 		em.getTransaction().commit();
 	}
 	
-	public ArrayList<Product> readAll()throws StorableNotFoundException, NullInputException{
+	public ArrayList<Product> readAll() {
 		
 		EntityManagerFactory emf = EMFSingleton.getInstance();
 		EntityManager em = emf.createEntityManager();
