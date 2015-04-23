@@ -75,6 +75,17 @@ public class ProductDAO extends SuperDAO implements IStorage<Product, Integer> {
 		em.getTransaction().commit();
 	}
 	
+	public Product read(String name) throws StorableNotFoundException{
+		em = emf.createEntityManager();
+		Query query = em.createNamedQuery("SELECT '"+name+"' FROM PRODUCT", Product.class);
+		Product product = (Product) query.getSingleResult();
+		
+		if(product==null)
+			throw new StorableNotFoundException("This product was not found");
+		
+		return product;
+	}
+	
 	public ArrayList<Product> readAll() {
 		em = emf.createEntityManager();
 		Query query = em.createNativeQuery("SELECT * FROM PRODUCT", Product.class);
