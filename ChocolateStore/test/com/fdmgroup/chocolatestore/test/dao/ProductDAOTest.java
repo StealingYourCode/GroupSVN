@@ -16,18 +16,13 @@ public class ProductDAOTest {
 	@Test
 	public void testPoductIsCreated() 
 	{
-		Product product = new Product();
+		Product product = new Product("Snickers",new BigDecimal(2.45), 100, "Packed with roasted peanuts, nougat, caramel and milk chocolate. SNICKERS Brand handles your hunger, so you handle the things in life that aren't related to hunger at all." );
 		
-		product.setName("Fancy Chocolate");
-		product.setPrice(new BigDecimal(123.45));
-		product.setStockAmount(new BigDecimal(140));
-		product.setDescription("This is so fancy it will blow your socks off!");
+		
 		
 		dao=new ProductDAO();
 		try {
-		dao.delete(50); 
-		
-			assertTrue(true);
+			assertTrue(dao.create(product) instanceof Product);
 		} catch (StorableNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

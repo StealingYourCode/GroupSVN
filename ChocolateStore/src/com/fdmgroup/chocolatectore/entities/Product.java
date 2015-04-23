@@ -31,7 +31,7 @@ public class Product implements Serializable {
 	private BigDecimal price;
 
 	@Column(name="STOCK_AMOUNT")
-	private BigDecimal stockAmount;
+	private Integer stockAmount;
 
 	//bi-directional many-to-one association to ProductSale
 	@OneToMany(mappedBy="product")
@@ -40,6 +40,13 @@ public class Product implements Serializable {
 	public Product() {
 	}
 
+	public Product(String name, BigDecimal price, Integer qty, String description) {
+		this.name = name;
+		this.price = price;
+		this.stockAmount = qty;
+		this.description = description;
+	}
+	
 	public Integer getProductId() {
 		return this.productId;
 	}
@@ -72,11 +79,11 @@ public class Product implements Serializable {
 		this.price = price;
 	}
 
-	public BigDecimal getStockAmount() {
+	public Integer getStockAmount() {
 		return this.stockAmount;
 	}
 
-	public void setStockAmount(BigDecimal stockAmount) {
+	public void setStockAmount(Integer stockAmount) {
 		this.stockAmount = stockAmount;
 	}
 
