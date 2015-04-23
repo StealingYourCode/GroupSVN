@@ -7,14 +7,12 @@ import com.fdmgroup.chocolatectore.entities.Sale;
 import com.fdmgroup.chocolatestore.exceptions.StorableNotFoundException;
 import com.fdmgroup.chocolatestore.interfaces.IStorable;
 import com.fdmgroup.chocolatestore.interfaces.IStorage;
-import com.fdmgroup.chocolatestore.singleton.EMFSingleton;
 
-public class SaleDAO implements IStorage<Sale, Integer>{
+public class SaleDAO extends SuperDAO implements  IStorage<Sale, Integer>{
 
 	@Override
 	public Sale read(Integer id) throws StorableNotFoundException {
-		EntityManagerFactory emf = EMFSingleton.getInstance();
-		EntityManager em = emf.createEntityManager();
+		
 		
 		Sale sale = em.find(Sale.class, id);
 		
@@ -29,9 +27,6 @@ public class SaleDAO implements IStorage<Sale, Integer>{
 		if(sale==null)
 			throw new StorableNotFoundException("This sale was not found");
 		
-		EntityManagerFactory emf = EMFSingleton.getInstance();
-		EntityManager em = emf.createEntityManager();
-		
 		em.getTransaction().begin();
 		em.persist(sale);
 		em.getTransaction().commit();
@@ -45,8 +40,7 @@ public class SaleDAO implements IStorage<Sale, Integer>{
 		if(oldSale==null|| newSale==null)
 			throw new StorableNotFoundException("This sale was not found");
 		
-		EntityManagerFactory emf = EMFSingleton.getInstance();
-		EntityManager em = emf.createEntityManager();
+		
 		
 		Sale result = em.find(Sale.class, oldSale.getSalesId());
 		em.getTransaction().begin();
@@ -60,8 +54,6 @@ public class SaleDAO implements IStorage<Sale, Integer>{
 
 	@Override
 	public void delete(Integer id) throws StorableNotFoundException {
-		EntityManagerFactory emf = EMFSingleton.getInstance();
-		EntityManager em = emf.createEntityManager();
 		
 		Sale sale = em.find(Sale.class, id);
 		

@@ -13,16 +13,13 @@ import com.fdmgroup.chocolatestore.interfaces.IStorable;
 import com.fdmgroup.chocolatestore.interfaces.IStorage;
 import com.fdmgroup.chocolatestore.singleton.EMFSingleton;
 
-public class ProductDAO implements IStorage<Product, Integer> {
+public class ProductDAO extends SuperDAO implements IStorage<Product, Integer> {
 
 	@Override
 	public Product read(Integer id) throws StorableNotFoundException, NullInputException {
 		
 		if(id==null)
 			throw new NullInputException("The input cannot be null");
-		
-		EntityManagerFactory emf = EMFSingleton.getInstance();
-		EntityManager em = emf.createEntityManager();
 
 		Product product = em.find(Product.class, id);
 		
@@ -35,8 +32,7 @@ public class ProductDAO implements IStorage<Product, Integer> {
 
 	@Override
 	public Product create(Product product)throws StorableNotFoundException{
-		EntityManagerFactory emf = EMFSingleton.getInstance();
-		EntityManager em = emf.createEntityManager();
+		
 
 		em.getTransaction().begin();
 		em.persist(product);
@@ -50,8 +46,7 @@ public class ProductDAO implements IStorage<Product, Integer> {
 
 	@Override
 	public Product update(Product oldProduct, Product newProduct)throws StorableNotFoundException{
-		EntityManagerFactory emf = EMFSingleton.getInstance();
-		EntityManager em = emf.createEntityManager();
+		
 
 		Product result = em.find(Product.class, oldProduct.getProductId());
 		
@@ -72,9 +67,6 @@ public class ProductDAO implements IStorage<Product, Integer> {
 	@Override
 	public void delete(Integer i)throws StorableNotFoundException {
 		
-		
-		EntityManagerFactory emf = EMFSingleton.getInstance();
-		EntityManager em = emf.createEntityManager();
 		Product product = em.find(Product.class, i);
 		
 		if (product==null)
@@ -86,9 +78,6 @@ public class ProductDAO implements IStorage<Product, Integer> {
 	}
 	
 	public ArrayList<Product> readAll() {
-		
-		EntityManagerFactory emf = EMFSingleton.getInstance();
-		EntityManager em = emf.createEntityManager();
 		
 		Query query = em.createNativeQuery("SELECT * FROM PRODUCT", Product.class);
 		ArrayList<Product> productList = (ArrayList<Product>) query.getResultList();

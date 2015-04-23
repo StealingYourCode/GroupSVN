@@ -11,13 +11,10 @@ import com.fdmgroup.chocolatestore.interfaces.IStorable;
 import com.fdmgroup.chocolatestore.interfaces.IStorage;
 import com.fdmgroup.chocolatestore.singleton.EMFSingleton;
 
-public class UserDAO implements IStorage<User, Integer>{
+public class UserDAO extends SuperDAO implements IStorage<User, Integer>{
 
 	@Override
 	public User read(Integer id) throws StorableNotFoundException {
-		
-		EntityManagerFactory emf = EMFSingleton.getInstance();
-		EntityManager em = emf.createEntityManager();
 		
 		User user = em.find(User.class, id);
 		
@@ -29,8 +26,7 @@ public class UserDAO implements IStorage<User, Integer>{
 
 	@Override
 	public User create(User user) throws StorableNotFoundException{
-		EntityManagerFactory emf = EMFSingleton.getInstance();
-		EntityManager em = emf.createEntityManager();
+
 		
 		if(user==null)
 			throw new StorableNotFoundException("This user was not found");
@@ -47,8 +43,6 @@ public class UserDAO implements IStorage<User, Integer>{
 		
 		if(oldUser==null || newUser==null)
 			throw new StorableNotFoundException("This user was not found");
-		EntityManagerFactory emf = EMFSingleton.getInstance();
-		EntityManager em = emf.createEntityManager();
 		
 		User result = em.find(User.class, oldUser.getUserId());
 		
@@ -63,9 +57,6 @@ public class UserDAO implements IStorage<User, Integer>{
 		
 	}
 	public void delete(Integer id) throws StorableNotFoundException{
-		// TODO Auto-generated method stub
-		EntityManagerFactory emf = EMFSingleton.getInstance();
-		EntityManager em = emf.createEntityManager();
 		
 		User user = em.find(User.class, id);
 		
