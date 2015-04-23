@@ -29,7 +29,8 @@
 								<h3>${product.productName}</h3>
 								<p>${product.price}</p>
 								<p align="center">
-									<a href="cart" class="btn btn-primary btn-block">Add To Cart</a>
+									
+									<a href="cart" class="btn btn-primary btn-block"><button>Add To Cart</button></a>
 								</p>
 							</div>
 						</div>

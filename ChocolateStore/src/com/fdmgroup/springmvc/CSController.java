@@ -1,13 +1,12 @@
 package com.fdmgroup.springmvc;
 
-import org.springframework.context.ApplicationContext;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.fdmgroup.chocolatectore.entities.Product;
-import com.fdmgroup.chocolatestore.dao.ProductDAO;
-import com.fdmgroup.chocolatestore.exceptions.StorableNotFoundException;
-import com.fdmgroup.chocolatestore.singleton.ContextSingleton;
+import com.fdmgroup.chocolatectore.entities.ProductSale;
 
 @Controller
 public class CSController {
@@ -20,9 +19,11 @@ public class CSController {
 	}
 	
 
-	
-	
+	@RequestMapping("/cart")
+	public String addToCart() {
+		List<ProductSale> saleList = new ArrayList<ProductSale>(); //TODO use spring here!
+		saleList.add(new ProductSale());
+		return "csFrontPage";
+	}
 
-	
-	
 }

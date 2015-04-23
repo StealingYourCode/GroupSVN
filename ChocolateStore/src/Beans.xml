@@ -20,8 +20,8 @@
 	<bean id="SaleDAO" class="com.fdmgroup.chocolatestore.dao.SaleDAO"/>
 	<bean id="UserDAO" class="com.fdmgroup.chocolatestore.dao.UserDAO"/>
 	
-	<bean id="User" class="com.fdmgroup.chocolatestore.dto.User"/>
-	<bean id="Product" class="com.fdmgroup.chocolateStore.dto.Product"/>
+	<bean id="User" class="com.fdmgroup.chocolatestore.entities.User"/>
+	<bean id="Product" class="com.fdmgroup.chocolateStore.entities.Product"/>
 
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 	
