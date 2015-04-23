@@ -11,6 +11,7 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name="PRODUCT_SALES")
+
 @NamedQuery(name="ProductSale.findAll", query="SELECT p FROM ProductSale p")
 public class ProductSale implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -18,11 +19,13 @@ public class ProductSale implements Serializable {
 	private BigDecimal quantity;
 
 	//bi-directional many-to-one association to Product
+	@Id
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="PS_PRODUCT_ID")
 	private Product product;
 
 	//bi-directional many-to-one association to Sale
+	@Id
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="PS_SALES_ID")
 	private Sale sale;

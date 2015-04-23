@@ -1,5 +1,12 @@
 @CHARSET "ISO-8859-1";
 
-.span4{
+.thumbnails li{
 	max-width: 20%;
+	display: inline-block;
+	margin: 15px;
+	border-width: medium;
+}
+.thumbnail{
+	border-width: 0px;
+	
 }

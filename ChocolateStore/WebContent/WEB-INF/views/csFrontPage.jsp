@@ -21,9 +21,9 @@
 		<ul class="thumbnails">
             <li class="span4">
               <div class="thumbnail">
-                <img src="/ChocolateStore/resources/images/snickers.jpg" alt="Snickers">
+                <img src="/ChocolateStore/resources/images/Snickers.jpg" alt="Snickers">
                 <div class="caption">
-                  <h3>Header Name</h3>
+                  <h3></h3>
                   <p>Description</p>
                   <p align="center"><a href="http://bootsnipp.com/" class="btn btn-primary btn-block">Open</a></p>
                 </div>
@@ -31,9 +31,9 @@
             </li>
               <li class="span4">
               <div class="thumbnail">
-                <img src="/ChocolateStore/resources/images/twix.jpg" alt="ALT NAME">
+                <img src="/ChocolateStore/resources/images/Twix.jpg" alt="ALT NAME">
                 <div class="caption">
-                  <h3>Header Name</h3>
+                  <h3>Snickers</h3>
                   <p>Description</p>
                   <p align="center"><a href="http://bootsnipp.com/" class="btn btn-primary btn-block">Open</a></p>
                 </div>
@@ -41,7 +41,7 @@
             </li>
               <li class="span4">
               <div class="thumbnail">
-                <img src="/ChocolateStore/resources/images/mars.jpg" alt="ALT NAME">
+                <img src="/ChocolateStore/resources/images/Mars.jpg" alt="ALT NAME">
                 <div class="caption">
                   <h3>Header Name</h3>
                   <p>Description</p>
@@ -51,7 +51,7 @@
             </li>
             <li class="span4">
               <div class="thumbnail">
-                <img src="/ChocolateStore/resources/images/skor.jpg" alt="ALT NAME">
+                <img src="/ChocolateStore/resources/images/KitKat.jpg" alt="ALT NAME">
                 <div class="caption">
                   <h3>Header Name</h3>
                   <p>Description</p>
@@ -61,7 +61,7 @@
             </li>
               <li class="span4">
                 <div class="thumbnail">
-                  <img src="/ChocolateStore/resources/images/FR.jpg" alt="ALT NAME">
+                  <img src="/ChocolateStore/resources/images/Klik.jpg" alt="ALT NAME">
                   <div class="caption">
                     <h3>Header Name</h3>
                     <p>Description</p>
@@ -71,7 +71,27 @@
               </li>
               <li class="span4">
                 <div class="thumbnail">
-                  <img src="/ChocolateStore/resources/images/butterfinger.jpg" alt="ALT NAME">
+                  <img src="/ChocolateStore/resources/images/Cadbury.jpg" alt="ALT NAME">
+                  <div class="caption">
+                    <h3>Header Name</h3>
+                    <p>Description</p>
+                    <p align="center"><a href="http://bootsnipp.com/" class="btn btn-primary btn-block">Open</a></p>
+                  </div>
+                </div>
+              </li>
+              <li class="span4">
+                <div class="thumbnail">
+                  <img src="/ChocolateStore/resources/images/encore!.jpg" alt="ALT NAME">
+                  <div class="caption">
+                    <h3>Header Name</h3>
+                    <p>Description</p>
+                    <p align="center"><a href="http://bootsnipp.com/" class="btn btn-primary btn-block">Open</a></p>
+                  </div>
+                </div>
+              </li>
+              <li class="span4">
+                <div class="thumbnail">
+                  <img src="/ChocolateStore/resources/images/Butterfinger.jpg" alt="ALT NAME">
                   <div class="caption">
                     <h3>Header Name</h3>
                     <p>Description</p>
