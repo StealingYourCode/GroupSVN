@@ -20,6 +20,7 @@ public class CSController {
 		return "csFrontPage";
 	}
 	
+	
 	public void updateInventory(String name, int amount){
 		ProductDAO dao = (ProductDAO) context.getBean("ProductDAO");
 		

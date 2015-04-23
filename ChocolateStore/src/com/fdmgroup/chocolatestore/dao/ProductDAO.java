@@ -53,7 +53,7 @@ public class ProductDAO extends SuperDAO implements IStorage<Product, Integer> {
 
 		em.getTransaction().begin();
 		result.setDescription(newProduct.getDescription());
-		result.setName(newProduct.getName());
+		result.setProductName(newProduct.getProductName());
 		result.setPrice(newProduct.getPrice());
 		result.setProductSales(newProduct.getProductSales());
 		result.setStockAmount(newProduct.getStockAmount());

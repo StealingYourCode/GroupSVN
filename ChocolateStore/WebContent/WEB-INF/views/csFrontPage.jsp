@@ -9,8 +9,9 @@
 <head>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/ChocolateStore/resources/css/csFrontPage.css">
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Chocolate Sstore</title>
+<title>Chocolate Store</title>
 </head>
 <body>
 
@@ -19,86 +20,21 @@
 	<div class="container">
 	<div class="row">
 		<ul class="thumbnails">
-            <li class="span4">
-              <div class="thumbnail">
-                <img src="/ChocolateStore/resources/images/Snickers.jpg" alt="Snickers">
-                <div class="caption">
-                  <h3></h3>
-                  <p>Description</p>
-                  <p align="center"><a href="http://bootsnipp.com/" class="btn btn-primary btn-block">Open</a></p>
-                </div>
-              </div>
-            </li>
-              <li class="span4">
-              <div class="thumbnail">
-                <img src="/ChocolateStore/resources/images/Twix.jpg" alt="ALT NAME">
-                <div class="caption">
-                  <h3>Snickers</h3>
-                  <p>Description</p>
-                  <p align="center"><a href="http://bootsnipp.com/" class="btn btn-primary btn-block">Open</a></p>
-                </div>
-              </div>
-            </li>
-              <li class="span4">
-              <div class="thumbnail">
-                <img src="/ChocolateStore/resources/images/Mars.jpg" alt="ALT NAME">
-                <div class="caption">
-                  <h3>Header Name</h3>
-                  <p>Description</p>
-                  <p align="center"><a href="http://bootsnipp.com/" class="btn btn-primary btn-block">Open</a></p>
-                </div>
-              </div>
-            </li>
-            <li class="span4">
-              <div class="thumbnail">
-                <img src="/ChocolateStore/resources/images/KitKat.jpg" alt="ALT NAME">
-                <div class="caption">
-                  <h3>Header Name</h3>
-                  <p>Description</p>
-                  <p align="center"><a href="http://bootsnipp.com/" class="btn btn-primary btn-block">Open</a></p>
-                </div>
-              </div>
-            </li>
-              <li class="span4">
-                <div class="thumbnail">
-                  <img src="/ChocolateStore/resources/images/Klik.jpg" alt="ALT NAME">
-                  <div class="caption">
-                    <h3>Header Name</h3>
-                    <p>Description</p>
-                    <p align="center"><a href="http://bootsnipp.com/" class="btn btn-primary btn-block">Open</a></p>
-                  </div>
-                </div>
-              </li>
-              <li class="span4">
-                <div class="thumbnail">
-                  <img src="/ChocolateStore/resources/images/Cadbury.jpg" alt="ALT NAME">
-                  <div class="caption">
-                    <h3>Header Name</h3>
-                    <p>Description</p>
-                    <p align="center"><a href="http://bootsnipp.com/" class="btn btn-primary btn-block">Open</a></p>
-                  </div>
-                </div>
-              </li>
-              <li class="span4">
-                <div class="thumbnail">
-                  <img src="/ChocolateStore/resources/images/encore!.jpg" alt="ALT NAME">
-                  <div class="caption">
-                    <h3>Header Name</h3>
-                    <p>Description</p>
-                    <p align="center"><a href="http://bootsnipp.com/" class="btn btn-primary btn-block">Open</a></p>
-                  </div>
-                </div>
-              </li>
-              <li class="span4">
-                <div class="thumbnail">
-                  <img src="/ChocolateStore/resources/images/Butterfinger.jpg" alt="ALT NAME">
-                  <div class="caption">
-                    <h3>Header Name</h3>
-                    <p>Description</p>
-                    <p align="center"><a href="http://bootsnipp.com/" class="btn btn-primary btn-block">Open</a></p>
-                  </div>
-                </div>
-              </li>
+				<c:forEach var="product" items="${applicationScope.productList}">
+					<li class="span4">
+						<div class="thumbnail">
+							<img src="/ChocolateStore/resources/images/${product.productName}.jpg"
+								alt="Snickers">
+							<div class="caption">
+								<h3>${product.productName}</h3>
+								<p>${product.price}</p>
+								<p align="center">
+									<a href="cart" class="btn btn-primary btn-block">Add To Cart</a>
+								</p>
+							</div>
+						</div>
+					</li>
+				</c:forEach>
         </ul>
 	</div>
 </div>

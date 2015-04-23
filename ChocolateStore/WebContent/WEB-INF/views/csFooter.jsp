@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="/ChocolateStore/resources/css/csFooter.css" >
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title></title>
 </head>
@@ -13,7 +14,7 @@
 		<a href="http://www.twitter.com" id="icons"><img alt=twitter_link src = "/ChocolateStore/resources/images/twitter_bird.png"/></a>
 		<a href="http://www.linkedin.com" id="icons"><img alt=linkedin_link src = "/ChocolateStore/resources/images/linkedin.png"/></a>
 		<a href="http://plus.google.com" id="icons"><img alt=googleplus_link src = "/ChocolateStore/resources/images/google-plus.png"/></a>
-		<div id="copyRight">&copy 2015 zvilamm.fdmgroup.com. All Rights Reserved.</div>
+		<div id="copyRight">&copy 2015 NI5JAV02.fdmgroup.com. All Rights Reserved.</div>
 	</footer>
 </body>
 </html>

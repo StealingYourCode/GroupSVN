@@ -1,0 +1,16 @@
+@CHARSET "ISO-8859-1";
+
+#logo{
+	margin-left:3%;
+}
+
+#cart{
+	position: absolute;
+	top:8%;
+	right: 10%;
+}
+
+p {
+	font-family: arial;
+	font-weight: bold;
+}

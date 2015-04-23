@@ -1,0 +1,24 @@
+@CHARSET "ISO-8859-1";
+
+
+footer{
+	position: relative;
+	margin-top: 1%;
+	margin-bottom: 1%;	
+	color: black;
+	opacity: 0.65;
+}
+
+hr{
+	width:100%;
+	border-bottom:thick;
+	border-bottom-color: black;
+}
+
+#copyRight{
+	position: absolute;
+	top: 0%;
+	font-family: arial;
+	font-size: small;
+	right: 2%;
+}

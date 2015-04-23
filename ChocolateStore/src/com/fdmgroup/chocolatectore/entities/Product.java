@@ -62,12 +62,12 @@ public class Product implements Serializable {
 		this.description = description;
 	}
 
-	public String getName() {
-		return this.productName;
+	public String getProductName() {
+		return productName;
 	}
 
-	public void setName(String name) {
-		this.productName = name;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
 	public BigDecimal getPrice() {

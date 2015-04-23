@@ -59,7 +59,7 @@ public class ProductDAOTest {
 		Product product;
 		try {
 			product=dao.read(3);
-			assertTrue(product.getName().equals("Snickers"));
+			assertTrue(product.getProductName().equals("Snickers"));
 		} catch (StorableNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
