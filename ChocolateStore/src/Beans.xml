@@ -20,7 +20,6 @@
 	<bean id="SaleDAO" class="com.fdmgroup.chocolatestore.dao.SaleDAO"/>
 	<bean id="UserDAO" class="com.fdmgroup.chocolatestore.dao.UserDAO"/>
 
-	
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 	
 	<aop:config>

@@ -1,10 +1,14 @@
 package com.fdmgroup.chocolatestore.servlets;
 
-import javax.persistence.EntityManagerFactory;
+import java.util.List;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
+import com.fdmgroup.chocolatectore.entities.Product;
+import com.fdmgroup.chocolatestore.dao.ProductDAO;
+import com.fdmgroup.chocolatestore.singleton.ContextSingleton;
 import com.fdmgroup.chocolatestore.singleton.EMFSingleton;
 
 /**
@@ -26,9 +30,12 @@ public class StartupListener implements ServletContextListener {
 	/**
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
-    public void contextInitialized(ServletContextEvent arg0) {
+    public void contextInitialized(ServletContextEvent scEvent) {
     	EMFSingleton.getInstance();
     	
+    	ProductDAO dao = (ProductDAO) ContextSingleton.getSpring().getBean("ProductDAO");
+    	List<Product> productList = dao.readAll();
+    	scEvent.getServletContext().setAttribute("productList", productList);
     }
 
 	/**

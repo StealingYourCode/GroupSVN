@@ -76,7 +76,7 @@ public class ProductDAO extends SuperDAO implements IStorage<Product, Integer> {
 	}
 	
 	public ArrayList<Product> readAll() {
-		
+		em = emf.createEntityManager();
 		Query query = em.createNativeQuery("SELECT * FROM PRODUCT", Product.class);
 		ArrayList<Product> productList = (ArrayList<Product>) query.getResultList();
 		

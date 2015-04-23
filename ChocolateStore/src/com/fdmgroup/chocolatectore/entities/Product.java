@@ -18,7 +18,6 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="PRODUCT_ID_SEQ")
 	@SequenceGenerator(name="PRODUCT_ID_SEQ", sequenceName="PRODUCT_ID_SEQ")
 	@Column(name="PRODUCT_ID")
