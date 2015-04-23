@@ -20,7 +20,7 @@ public class Sale implements Serializable {
 	@SequenceGenerator(name="SALES_SALESID_GENERATOR", sequenceName="SALE_ID_SEQ")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SALES_SALESID_GENERATOR")
 	@Column(name="SALES_ID")
-	private long salesId;
+	private Integer salesId;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="SALE_DATE")
@@ -38,11 +38,11 @@ public class Sale implements Serializable {
 	public Sale() {
 	}
 
-	public long getSalesId() {
+	public Integer getSalesId() {
 		return this.salesId;
 	}
 
-	public void setSalesId(long salesId) {
+	public void setSalesId(Integer salesId) {
 		this.salesId = salesId;
 	}
 
