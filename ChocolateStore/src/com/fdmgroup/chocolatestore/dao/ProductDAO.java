@@ -7,6 +7,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
 import com.fdmgroup.chocolatectore.entities.Product;
+import com.fdmgroup.chocolatestore.exceptions.NullInputException;
+import com.fdmgroup.chocolatestore.exceptions.StorableNotFoundException;
 import com.fdmgroup.chocolatestore.interfaces.IStorable;
 import com.fdmgroup.chocolatestore.interfaces.IStorage;
 import com.fdmgroup.chocolatestore.singleton.EMFSingleton;
@@ -14,30 +16,40 @@ import com.fdmgroup.chocolatestore.singleton.EMFSingleton;
 public class ProductDAO implements IStorage<Product, Integer> {
 
 	@Override
-	public Product read(Integer id) {
+	public Product read(Integer id) throws StorableNotFoundException, NullInputException {
+		
+		if(id==null)
+			throw new NullInputException("The input cannot be null");
+		
 		EntityManagerFactory emf = EMFSingleton.getInstance();
 		EntityManager em = emf.createEntityManager();
 
 		Product product = em.find(Product.class, id);
+		
+		if(product==null)
+			throw new StorableNotFoundException("This product was not found");
 
 		return product;
 	}
 	
 
 	@Override
-	public Product create(Product product) {
+	public Product create(Product product)throws StorableNotFoundException{
 		EntityManagerFactory emf = EMFSingleton.getInstance();
 		EntityManager em = emf.createEntityManager();
 
 		em.getTransaction().begin();
 		em.persist(product);
 		em.getTransaction().commit();
-
+		
+		if(product==null)
+			throw new StorableNotFoundException("This product was not found");
+		
 		return product;
 	}
 
 	@Override
-	public Product update(Product oldProduct, Product newProduct) {
+	public Product update(Product oldProduct, Product newProduct)throws StorableNotFoundException{
 		EntityManagerFactory emf = EMFSingleton.getInstance();
 		EntityManager em = emf.createEntityManager();
 
@@ -55,7 +67,7 @@ public class ProductDAO implements IStorage<Product, Integer> {
 	}
 
 	@Override
-	public void delete(Integer i) {
+	public void delete(Integer i)throws StorableNotFoundException {
 		EntityManagerFactory emf = EMFSingleton.getInstance();
 		EntityManager em = emf.createEntityManager();
 		Product product = em.find(Product.class, i);
@@ -65,7 +77,7 @@ public class ProductDAO implements IStorage<Product, Integer> {
 		em.getTransaction().commit();
 	}
 	
-	public ArrayList<Product> readAll(){
+	public ArrayList<Product> readAll()throws StorableNotFoundException, NullInputException{
 		
 		EntityManagerFactory emf = EMFSingleton.getInstance();
 		EntityManager em = emf.createEntityManager();
