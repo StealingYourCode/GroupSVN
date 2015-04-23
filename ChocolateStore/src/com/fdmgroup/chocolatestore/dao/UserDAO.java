@@ -1,5 +1,6 @@
 package com.fdmgroup.chocolatestore.dao;
 
+import com.fdmgroup.chocolatectore.entities.User;
 import com.fdmgroup.chocolatestore.interfaces.IStorable;
 import com.fdmgroup.chocolatestore.interfaces.IStorage;
 

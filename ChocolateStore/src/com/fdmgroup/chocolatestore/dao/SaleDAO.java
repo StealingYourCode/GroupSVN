@@ -1,10 +1,10 @@
 package com.fdmgroup.chocolatestore.dao;
 
-import com.fdmgroup.chocolatectore.entities.Product;
+import com.fdmgroup.chocolatectore.entities.Sale;
 import com.fdmgroup.chocolatestore.interfaces.IStorable;
 import com.fdmgroup.chocolatestore.interfaces.IStorage;
 
-public class ProductDAO implements IStorage<Product, Integer>{
+public class SaleDAO implements IStorage<Sale, Integer>{
 
 	@Override
 	public IStorable read(Integer i) {
@@ -13,13 +13,13 @@ public class ProductDAO implements IStorage<Product, Integer>{
 	}
 
 	@Override
-	public IStorable create(Product t) {
+	public IStorable create(Sale t) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public IStorable update(Product t, Product a) {
+	public IStorable update(Sale t, Sale a) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -30,4 +30,5 @@ public class ProductDAO implements IStorage<Product, Integer>{
 		return null;
 	}
 
+	
 }
