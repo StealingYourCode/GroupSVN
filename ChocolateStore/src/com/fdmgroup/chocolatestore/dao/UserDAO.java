@@ -1,7 +1,9 @@
 package com.fdmgroup.chocolatestore.dao;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
+import com.fdmgroup.chocolatestore.entities.Product;
 import com.fdmgroup.chocolatestore.entities.User;
 import com.fdmgroup.chocolatestore.exceptions.StorableNotFoundException;
 import com.fdmgroup.chocolatestore.interfaces.IStorage;
@@ -62,6 +64,19 @@ public class UserDAO extends SuperDAO implements IStorage<User, Integer>{
 		em.getTransaction().begin();
 		em.remove(user);
 		em.getTransaction().commit();
+	}
+	
+	public User read(String username) throws StorableNotFoundException{
+		em = emf.createEntityManager();
+		
+		Query query = em.createNativeQuery("SELECT * FROM USERS WHERE EMAIL= '"+username+"'", User.class);
+		User user = (User) query.getSingleResult();
+		
+		if(user==null)
+			throw new StorableNotFoundException("This user was not found");
+		return user;
+		
+
 	}
 	
 	

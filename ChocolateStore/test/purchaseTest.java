@@ -18,10 +18,10 @@ public class purchaseTest {
 		BusinessLogic bl = new BusinessLogic();
 		ProductDAO dao = new ProductDAO();
 		try {
-		bl.updateInventory("Snickers", 5);
+		bl.updateInventory("Snickers", 5, "email@email.com");
 		
 		
-			assertTrue(dao.read(3).getStockAmount()==45);
+			assertTrue(dao.read(3).getStockAmount()==30);
 		} catch (StorableNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

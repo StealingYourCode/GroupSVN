@@ -4,9 +4,11 @@ import java.util.Calendar;
 
 import org.springframework.context.ApplicationContext;
 
+import com.fdmgroup.chocolatestore.dao.ProductDAO;
+import com.fdmgroup.chocolatestore.dao.SaleDAO;
+import com.fdmgroup.chocolatestore.dao.UserDAO;
 import com.fdmgroup.chocolatestore.entities.Product;
 import com.fdmgroup.chocolatestore.entities.Sale;
-import com.fdmgroup.chocolatestore.dao.ProductDAO;
 import com.fdmgroup.chocolatestore.exceptions.NullInputException;
 import com.fdmgroup.chocolatestore.exceptions.StorableNotFoundException;
 import com.fdmgroup.chocolatestore.singleton.ContextSingleton;
@@ -14,9 +16,11 @@ import com.fdmgroup.chocolatestore.singleton.ContextSingleton;
 public class BusinessLogic {
 	ApplicationContext context = ContextSingleton.getSpring();
 
-	public synchronized void updateInventory(String name, int amount) throws NullInputException{
+	public synchronized void updateInventory(String name, int amount, String username) throws NullInputException{
 		ProductDAO dao = (ProductDAO) context.getBean("ProductDAO");
 		Sale sale = (Sale) context.getBean("Sale");
+		UserDAO userDao = (UserDAO) context.getBean("UserDAO");
+		SaleDAO saleDao = (SaleDAO) context.getBean("SaleDAO");
 		
 		if(amount<0){
 			throw new NullInputException("Amount cannot be less than 0");
@@ -33,7 +37,9 @@ public class BusinessLogic {
 				newProduct.setStockAmount(product.getStockAmount()-amount);
 				dao.update(product, newProduct);
 				sale.setSaleDate(Calendar.getInstance());
-				sale.setUser(user);
+				sale.setUser(userDao.read(username));
+				saleDao.create(sale);
+				
 			}
 		} catch (StorableNotFoundException e) {
 			
