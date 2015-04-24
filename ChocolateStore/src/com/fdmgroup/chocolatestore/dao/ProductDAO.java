@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import com.fdmgroup.chocolatectore.entities.Product;
+import com.fdmgroup.chocolatestore.entities.Product;
 import com.fdmgroup.chocolatestore.exceptions.NullInputException;
 import com.fdmgroup.chocolatestore.exceptions.StorableNotFoundException;
 import com.fdmgroup.chocolatestore.interfaces.IStorage;

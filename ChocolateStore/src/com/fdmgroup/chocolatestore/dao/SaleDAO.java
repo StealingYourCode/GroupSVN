@@ -3,7 +3,7 @@ package com.fdmgroup.chocolatestore.dao;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-import com.fdmgroup.chocolatectore.entities.Sale;
+import com.fdmgroup.chocolatestore.entities.Sale;
 import com.fdmgroup.chocolatestore.exceptions.StorableNotFoundException;
 import com.fdmgroup.chocolatestore.interfaces.IStorable;
 import com.fdmgroup.chocolatestore.interfaces.IStorage;

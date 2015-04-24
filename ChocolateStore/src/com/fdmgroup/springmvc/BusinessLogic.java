@@ -1,8 +1,11 @@
 package com.fdmgroup.springmvc;
 
+import java.util.Calendar;
+
 import org.springframework.context.ApplicationContext;
 
-import com.fdmgroup.chocolatectore.entities.Product;
+import com.fdmgroup.chocolatestore.entities.Product;
+import com.fdmgroup.chocolatestore.entities.Sale;
 import com.fdmgroup.chocolatestore.dao.ProductDAO;
 import com.fdmgroup.chocolatestore.exceptions.NullInputException;
 import com.fdmgroup.chocolatestore.exceptions.StorableNotFoundException;
@@ -13,6 +16,7 @@ public class BusinessLogic {
 
 	public synchronized void updateInventory(String name, int amount) throws NullInputException{
 		ProductDAO dao = (ProductDAO) context.getBean("ProductDAO");
+		Sale sale = (Sale) context.getBean("Sale");
 		
 		if(amount<0){
 			throw new NullInputException("Amount cannot be less than 0");
@@ -28,6 +32,8 @@ public class BusinessLogic {
 				Product newProduct= copyProduct(product);
 				newProduct.setStockAmount(product.getStockAmount()-amount);
 				dao.update(product, newProduct);
+				sale.setSaleDate(Calendar.getInstance());
+				sale.setUser(user);
 			}
 		} catch (StorableNotFoundException e) {
 			

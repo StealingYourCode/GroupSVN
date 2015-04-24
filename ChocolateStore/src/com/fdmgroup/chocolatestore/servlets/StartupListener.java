@@ -6,7 +6,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
-import com.fdmgroup.chocolatectore.entities.Product;
+import com.fdmgroup.chocolatestore.entities.Product;
 import com.fdmgroup.chocolatestore.dao.ProductDAO;
 import com.fdmgroup.chocolatestore.singleton.ContextSingleton;
 import com.fdmgroup.chocolatestore.singleton.EMFSingleton;

@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.fdmgroup.chocolatectore.entities.ProductSale;
+import com.fdmgroup.chocolatestore.entities.ProductSale;
 
 @Controller
 public class CSController {
