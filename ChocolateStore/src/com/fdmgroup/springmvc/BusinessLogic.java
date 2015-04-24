@@ -100,4 +100,22 @@ public class BusinessLogic {
 		return null;
 
 	}
+	
+	public User Register(String username, String password){
+		User user = (User) context.getBean("User");
+		user.setEmail(username);
+		user.setPassword(password);
+		
+		try {
+			userDao.create(user);
+			return user;
+		} catch (StorableNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			e.getMessage();
+		}
+		
+		return null;
+		
+	}
 }
