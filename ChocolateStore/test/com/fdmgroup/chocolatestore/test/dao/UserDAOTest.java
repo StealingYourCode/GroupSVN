@@ -1,13 +1,12 @@
 package com.fdmgroup.chocolatestore.test.dao;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com.fdmgroup.chocolatectore.entities.User;
+import com.fdmgroup.chocolatestore.entities.User;
 import com.fdmgroup.chocolatestore.dao.UserDAO;
 import com.fdmgroup.chocolatestore.exceptions.StorableNotFoundException;
 

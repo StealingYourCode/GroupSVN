@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com.fdmgroup.chocolatectore.entities.Product;
+import com.fdmgroup.chocolatestore.entities.Product;
 import com.fdmgroup.chocolatestore.dao.ProductDAO;
 import com.fdmgroup.chocolatestore.exceptions.NullInputException;
 import com.fdmgroup.chocolatestore.exceptions.StorableNotFoundException;
