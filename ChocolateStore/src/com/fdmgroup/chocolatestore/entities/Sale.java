@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -31,7 +32,7 @@ public class Sale implements Serializable {
 
 	//bi-directional many-to-one association to ProductSale
 	@OneToMany(mappedBy="sale")
-	private List<ProductSale> productSales;
+	private List<ProductSale> productSales = new ArrayList<ProductSale>();
 
 	//bi-directional many-to-one association to User
 	@ManyToOne(fetch=FetchType.LAZY)

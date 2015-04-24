@@ -14,12 +14,12 @@
 	<header id="csHeader">
 		<a id="logo" href="csFrontPage"><img alt="CS_LOGO"
 			src="/ChocolateStore/resources/images/logo.jpg" /> </a>
-	
-
+		
+		
 		<a id="cart" href="#" class="btn btn-info btn-lg"> 
-		<span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart
+		<span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart  <div>${cartQty}</div>
 		</a>
-		<p>1</p>
+		
 	</header>
 
 </body>

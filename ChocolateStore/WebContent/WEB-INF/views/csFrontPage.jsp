@@ -15,31 +15,35 @@
 </head>
 <body>
 
-	<%@ include file="csHeader.jsp" %>
-	
+	<%@ include file="csHeader.jsp"%>
+
 	<div class="container">
-	<div class="row">
-		<ul class="thumbnails">
+		<div class="row">
+			<ul class="thumbnails">
 				<c:forEach var="product" items="${applicationScope.productList}">
 					<li class="span4">
 						<div class="thumbnail">
-							<img src="/ChocolateStore/resources/images/${product.productName}.jpg"
+							<img
+								src="/ChocolateStore/resources/images/${product.productName}.jpg"
 								alt="Snickers">
 							<div class="caption">
 								<h3>${product.productName}</h3>
 								<p>${product.price}</p>
 								<p align="center">
-									
-									<a href="cart" class="btn btn-primary btn-block"><button>Add To Cart</button></a>
+									<sf:form action="cart" method="GET">
+										<input name="candy" value="${product.productName}"
+											hidden="true" />
+										<button class="btn btn-primary btn-block">Add To Cart</button>
+									</sf:form>
 								</p>
 							</div>
 						</div>
 					</li>
 				</c:forEach>
-        </ul>
+			</ul>
+		</div>
 	</div>
-</div>
-	<%@ include file="csFooter.jsp" %>
+	<%@ include file="csFooter.jsp"%>
 	
 </body>
 </html>

@@ -10,7 +10,13 @@
 	right: 10%;
 }
 
-p {
+#cart div {
 	font-family: arial;
 	font-weight: bold;
+	color: red;
+}
+
+p {
+	font-weight: bold;
+	color: red;
 }

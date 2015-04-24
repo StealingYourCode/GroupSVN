@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Table(name="PRODUCT_SALES")
 @IdClass(MyKey.class)
 @NamedQuery(name="ProductSale.findAll", query="SELECT p FROM ProductSale p")
-public class ProductSale implements Serializable {
+public class ProductSale implements Serializable, Comparable<ProductSale> {
 	private static final long serialVersionUID = 1L;
 
 	private Integer quantity;
@@ -56,6 +56,14 @@ public class ProductSale implements Serializable {
 	public void setSale(Sale sale) {
 		this.sale = sale;
 	}
+
+	@Override
+	public int compareTo(ProductSale o) {
+		
+		return this.getProduct().getProductName().compareTo(o.getProduct().getProductName());
+	}
+
+	
 
 }
 
