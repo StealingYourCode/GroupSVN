@@ -50,11 +50,8 @@ public class BusinessLogic {
 				sale.setSaleDate(Calendar.getInstance());
 				sale.setUser(userDao.read(username));
 
-				psList = setProductSaleList(product, amount, sale);
-				for(ProductSale ps : psList)
-					psDao.create(ps);
-
 				saleDao.create(sale);
+				psDao.create(setProductSale(newProduct, amount, sale));
 
 			}
 		} catch (StorableNotFoundException e) {
@@ -75,15 +72,13 @@ public class BusinessLogic {
 
 	}
 
-	public List<ProductSale> setProductSaleList(Product product, int amount,
-			Sale sale) {
+	public ProductSale setProductSale(Product product, int amount, Sale sale) {
 
 		ProductSale ps = (ProductSale) context.getBean("ProductSale");
 		ps.setProduct(product);
 		ps.setQuantity(amount);
 		ps.setSale(sale);
-		psList.add(ps);
-		return psList;
+		return ps;
 	}
 
 	public User Login(String username, String password)
@@ -93,20 +88,19 @@ public class BusinessLogic {
 			throw new NullInputException("Email or password cannot be null");
 		}
 
-		try{
+		try {
 			User user = userDao.read(username);
 
 			if (user.getPassword().equals(password))
 				return user;
-		}
-		catch(NoResultException e){
+		} catch (NoResultException e) {
 			throw new StorableNotFoundException("This user does not exist");
 		}
 		return null;
 
 	}
 
-	public User Register(String username, String password){
+	public User Register(String username, String password) {
 		User user = (User) context.getBean("User");
 		user.setEmail(username);
 		user.setPassword(password);
