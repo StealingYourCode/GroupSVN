@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 public class ProductSale implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private BigDecimal quantity;
+	private Integer quantity;
 
 	//bi-directional many-to-one association to Product
 	@Id
@@ -33,11 +33,11 @@ public class ProductSale implements Serializable {
 	public ProductSale() {
 	}
 
-	public BigDecimal getQuantity() {
+	public Integer getQuantity() {
 		return this.quantity;
 	}
 
-	public void setQuantity(BigDecimal quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
 
