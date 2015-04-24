@@ -51,7 +51,7 @@ public class BusinessLogic {
 				sale.setUser(userDao.read(username));
 
 				saleDao.create(sale);
-				psDao.create(setProductSale(newProduct, amount, sale));
+//				psDao.create(setProductSale(product, amount, sale));
 
 			}
 		} catch (StorableNotFoundException e) {
@@ -67,6 +67,7 @@ public class BusinessLogic {
 		productCopy.setProductName(product.getProductName());
 		productCopy.setPrice(product.getPrice());
 		productCopy.setStockAmount(product.getStockAmount());
+		
 
 		return productCopy;
 
