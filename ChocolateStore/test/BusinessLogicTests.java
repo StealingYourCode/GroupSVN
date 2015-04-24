@@ -16,15 +16,14 @@ import com.fdmgroup.springmvc.BusinessLogic;
 public class BusinessLogicTests {
 	ApplicationContext context = ContextSingleton.getSpring();
 
-	BusinessLogic bl = new BusinessLogic();
-	ProductDAO dao =  (ProductDAO) context.getBean("ProductDAO");
+	BusinessLogic bl = new BusinessLogic();//(BusinessLogic) context.getBean("BusinessLogic");
+	ProductDAO dao =  new ProductDAO();//(ProductDAO) context.getBean("ProductDAO");
 
 	@Test
 	public void testAfterPurchaseInventory(){
 
 		try {
 		bl.updateInventory("Snickers", 5, "email@email.com");
-		
 		
 			assertTrue(dao.read(3).getStockAmount()==25);
 		} catch (StorableNotFoundException e) {
@@ -65,5 +64,10 @@ public class BusinessLogicTests {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		} 
+//	}
+	
+//	@Test
+//	public void testRegister(){
+//		bl.Register("Louis", "password");
 //	}
 }

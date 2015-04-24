@@ -100,10 +100,8 @@ public class BusinessLogic {
 
 	}
 
-	public User Register(String username, String password) {
-		User user = (User) context.getBean("User");
-		user.setEmail(username);
-		user.setPassword(password);
+	public User Register(User user) {
+		
 
 		try {
 			userDao.create(user);
