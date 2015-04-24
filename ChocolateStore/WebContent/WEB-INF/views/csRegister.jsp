@@ -15,9 +15,9 @@
 
 	<h2>Request</h2>
 	<div id='border'>
-		<sf:form role="form" method="post" modelAttribute="user" action=/register>
+		<sf:form role="form" method="post" modelAttribute="user" action="/register">
 			<div class="form-group">
-				<sf:label path="email"></sf:label>
+				<sf:label path="email">EMAIL</sf:label>
 				<sf:input type="email" path="email" class="form-control" placeholder="PRICE" />
 			</div>
 			<div class="form-group">
@@ -25,7 +25,7 @@
 				<sf:input type="password" class="form-control" path="password" placeholder="password" />
 			</div>
 			<div class="form-group">
-				<sf:label path="confimrPassword">Confirm Password</sf:label>
+				<sf:label path="confirmPassword">Confirm Password</sf:label>
 				<sf:input type="passowrd" class="form-control" path="confirmPassword" placeholder="confirmPassword" />
 			</div>
 			<input type="submit" class="btn btn-default" value="Register" />

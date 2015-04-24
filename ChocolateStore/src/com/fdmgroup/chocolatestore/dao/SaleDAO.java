@@ -46,7 +46,7 @@ public class SaleDAO extends SuperDAO implements  IStorage<Sale, Integer>{
 		em = emf.createEntityManager();
 		Sale result = em.find(Sale.class, oldSale.getSalesId());
 		em.getTransaction().begin();
-		result.setProductSales(newSale.getProductSales());
+		//result.setProductSales(newSale.getProductSales());
 		result.setSaleDate(newSale.getSaleDate());
 		result.setUser(newSale.getUser());
 		em.getTransaction().commit();

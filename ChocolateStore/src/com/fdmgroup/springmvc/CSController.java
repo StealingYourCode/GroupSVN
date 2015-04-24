@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.fdmgroup.chocolatestore.entities.Product;
 import com.fdmgroup.chocolatestore.entities.ProductSale;
+import com.fdmgroup.chocolatestore.entities.User;
 import com.fdmgroup.chocolatestore.singleton.ContextSingleton;
 
 @Controller
@@ -69,6 +70,12 @@ public class CSController {
 			qty = qty + ps.getQuantity(); 
 			}
 		return qty;
+	}
+	
+	@RequestMapping("/csRegister")
+	public String goToRegister(Model model) {
+		model.addAttribute("user", new User());
+		return "csRegister";
 	}
 
 }

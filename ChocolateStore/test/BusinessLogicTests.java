@@ -19,51 +19,51 @@ public class BusinessLogicTests {
 	BusinessLogic bl = new BusinessLogic();
 	ProductDAO dao =  (ProductDAO) context.getBean("ProductDAO");
 
-//	@Test
-//	public void testAfterPurchaseInventory(){
+	@Test
+	public void testAfterPurchaseInventory(){
 
+		try {
+		bl.updateInventory("Snickers", 5, "email@email.com");
+		
+		
+			assertTrue(dao.read(3).getStockAmount()==25);
+		} catch (StorableNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NullInputException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		
+	}
+	}
+	
+//	@Test
+//	public void loginTest(){
+//		
 //		try {
-//		bl.updateInventory("Snickers", 5, "email@email.com");
-//		
-//		
-//			assertTrue(dao.read(3).getStockAmount()==25);
-//		} catch (StorableNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
+//			User user= bl.Login("email@email.com", "password");
+//			assertTrue(user.getUserId()==1100);
 //		} catch (NullInputException e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
+//		} catch (StorableNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 //		
 //	}
+//	
+//	@Test
+//	(expected=StorableNotFoundException.class)
+//	public void TestLoginThrowsException(){
+//		try {
+//			User user = bl.Login("gibberish", "password");
+//		} catch (NullInputException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (StorableNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} 
 //	}
-	
-	@Test
-	public void loginTest(){
-		
-		try {
-			User user= bl.Login("email@email.com", "password");
-			assertTrue(user.getUserId()==1100);
-		} catch (NullInputException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (StorableNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-	
-	@Test
-	(expected=StorableNotFoundException.class)
-	public void TestLoginThrowsException(){
-		try {
-			User user = bl.Login("gibberish", "password");
-		} catch (NullInputException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (StorableNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-	}
 }

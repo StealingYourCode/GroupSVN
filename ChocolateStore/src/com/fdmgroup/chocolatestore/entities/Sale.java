@@ -1,13 +1,24 @@
 package com.fdmgroup.chocolatestore.entities;
 
 import java.io.Serializable;
-
-import javax.persistence.*;
-
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 /**
@@ -30,9 +41,9 @@ public class Sale implements Serializable {
 	@Column(name="SALE_DATE")
 	private Calendar saleDate;
 
-	//bi-directional many-to-one association to ProductSale
-	@OneToMany(mappedBy="sale")
-	private List<ProductSale> productSales = new ArrayList<ProductSale>();
+//	//bi-directional many-to-one association to ProductSale
+//	@OneToMany(mappedBy="sale")
+//	private List<ProductSale> productSales = new ArrayList<ProductSale>();
 
 	//bi-directional many-to-one association to User
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -58,27 +69,27 @@ public class Sale implements Serializable {
 		this.saleDate = saleDate;
 	}
 
-	public List<ProductSale> getProductSales() {
-		return this.productSales;
-	}
-
-	public void setProductSales(List<ProductSale> productSales) {
-		this.productSales = productSales;
-	}
-
-	public ProductSale addProductSale(ProductSale productSale) {
-		getProductSales().add(productSale);
-		productSale.setSale(this);
-
-		return productSale;
-	}
-
-	public ProductSale removeProductSale(ProductSale productSale) {
-		getProductSales().remove(productSale);
-		productSale.setSale(null);
-
-		return productSale;
-	}
+//	public List<ProductSale> getProductSales() {
+//		return this.productSales;
+//	}
+//
+//	public void setProductSales(List<ProductSale> productSales) {
+//		this.productSales = productSales;
+//	}
+//
+//	public ProductSale addProductSale(ProductSale productSale) {
+//		getProductSales().add(productSale);
+//		productSale.setSale(this);
+//
+//		return productSale;
+//	}
+//
+//	public ProductSale removeProductSale(ProductSale productSale) {
+//		getProductSales().remove(productSale);
+//		productSale.setSale(null);
+//
+//		return productSale;
+//	}
 
 	public User getUser() {
 		return this.user;

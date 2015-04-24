@@ -9,6 +9,7 @@ import javax.persistence.NoResultException;
 import org.springframework.context.ApplicationContext;
 
 import com.fdmgroup.chocolatestore.dao.ProductDAO;
+import com.fdmgroup.chocolatestore.dao.ProductSaleDAO;
 import com.fdmgroup.chocolatestore.dao.SaleDAO;
 import com.fdmgroup.chocolatestore.dao.UserDAO;
 import com.fdmgroup.chocolatestore.entities.Product;
@@ -22,11 +23,11 @@ import com.fdmgroup.chocolatestore.singleton.ContextSingleton;
 public class BusinessLogic {
 	ApplicationContext context = ContextSingleton.getSpring();
 	List<ProductSale> psList = new ArrayList<ProductSale>();
-	ProductSale ps = (ProductSale) context.getBean("ProductSale");
 	ProductDAO productDao = (ProductDAO) context.getBean("ProductDAO");
 	Sale sale = (Sale) context.getBean("Sale");
 	UserDAO userDao = (UserDAO) context.getBean("UserDAO");
 	SaleDAO saleDao = (SaleDAO) context.getBean("SaleDAO");
+	ProductSaleDAO psDao = (ProductSaleDAO) context.getBean("ProductSaleDAO");
 
 	public synchronized void updateInventory(String name, int amount,
 			String username) throws NullInputException {
@@ -49,7 +50,9 @@ public class BusinessLogic {
 				sale.setSaleDate(Calendar.getInstance());
 				sale.setUser(userDao.read(username));
 
-				sale.setProductSales(setProductSaleList(product, amount, sale));
+				psList = setProductSaleList(product, amount, sale);
+				for(ProductSale ps : psList)
+					psDao.create(ps);
 
 				saleDao.create(sale);
 
@@ -74,6 +77,8 @@ public class BusinessLogic {
 
 	public List<ProductSale> setProductSaleList(Product product, int amount,
 			Sale sale) {
+
+		ProductSale ps = (ProductSale) context.getBean("ProductSale");
 		ps.setProduct(product);
 		ps.setQuantity(amount);
 		ps.setSale(sale);
@@ -90,22 +95,22 @@ public class BusinessLogic {
 
 		try{
 			User user = userDao.read(username);
-			
+
 			if (user.getPassword().equals(password))
 				return user;
 		}
 		catch(NoResultException e){
 			throw new StorableNotFoundException("This user does not exist");
-			}
+		}
 		return null;
 
 	}
-	
+
 	public User Register(String username, String password){
 		User user = (User) context.getBean("User");
 		user.setEmail(username);
 		user.setPassword(password);
-		
+
 		try {
 			userDao.create(user);
 			return user;
@@ -114,8 +119,8 @@ public class BusinessLogic {
 			e.printStackTrace();
 			e.getMessage();
 		}
-		
+
 		return null;
-		
+
 	}
 }
