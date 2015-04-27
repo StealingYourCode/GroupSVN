@@ -30,11 +30,9 @@ public class BusinessLogic {
 	ProductSaleDAO psDao = (ProductSaleDAO) context.getBean("ProductSaleDAO");
 
 	public synchronized void purchase(String name, int amount,
-			String username) throws NullInputException {
+			String username)  {
 
-		if (amount < 0) {
-			throw new NullInputException("Amount cannot be less than 0");
-		}
+		
 
 		try {
 			Product product = productDao.read(name);
