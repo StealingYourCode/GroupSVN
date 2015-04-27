@@ -16,16 +16,18 @@
 	<context:annotation-config />
 	
 	<!-- Beans -->
-	<bean id="ProductDAO" class="com.fdmgroup.chocolatestore.dao.ProductDAO"/>
-	<bean id="SaleDAO" class="com.fdmgroup.chocolatestore.dao.SaleDAO"/>
-	<bean id="UserDAO" class="com.fdmgroup.chocolatestore.dao.UserDAO"/>
-	<bean id ="ProductSaleDAO" class="com.fdmgroup.chocolatestore.dao.ProductSaleDAO"/>
-	<bean id="BusinessLogic"   class="com.fdmgroup.springmvc.BusinessLogic"/>
+	<bean id="ProductDAO" class="com.fdmgroup.chocolatestore.dao.ProductDAO" scope="prototype"/>
+	<bean id="SaleDAO" class="com.fdmgroup.chocolatestore.dao.SaleDAO" scope="prototype"/>
+	<bean id="UserDAO" class="com.fdmgroup.chocolatestore.dao.UserDAO" scope="prototype"/>
+	<bean id ="ProductSaleDAO" class="com.fdmgroup.chocolatestore.dao.ProductSaleDAO" scope="prototype"/>
+	<bean id="BusinessLogic" class="com.fdmgroup.springmvc.BusinessLogic" scope="prototype"/>
 	
-	<bean id="User" class="com.fdmgroup.chocolatestore.entities.User"/>
-	<bean id="Product" class="com.fdmgroup.chocolatestore.entities.Product"/>
-	<bean id="ProductSale" class="com.fdmgroup.chocolatestore.entities.ProductSale"/>
-	<bean id="Sale" class = "com.fdmgroup.chocolatestore.entities.Sale"/>
+	<bean id="User" class="com.fdmgroup.chocolatestore.entities.User" scope="prototype"/>
+	<bean id="Product" class="com.fdmgroup.chocolatestore.entities.Product" scope="prototype"/>
+	<bean id="ProductSale" class="com.fdmgroup.chocolatestore.entities.ProductSale" scope="prototype"/>
+	<bean id="Sale" class="com.fdmgroup.chocolatestore.entities.Sale" scope="prototype"/>
+	
+	<bean id="psList" class="java.util.ArrayList"/>
 
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 	

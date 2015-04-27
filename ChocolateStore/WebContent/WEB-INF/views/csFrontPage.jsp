@@ -30,7 +30,7 @@
 								<h3>${product.productName}</h3>
 								<p>${product.price}</p>
 								<p align="center">
-									<sf:form action="cart" method="GET">
+									<sf:form action="addToCart" method="GET">
 										<input name="candy" value="${product.productName}"
 											hidden="true" />
 										<button class="btn btn-primary btn-block">Add To Cart</button>

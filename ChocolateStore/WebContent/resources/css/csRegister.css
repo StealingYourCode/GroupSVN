@@ -1,0 +1,9 @@
+@CHARSET "ISO-8859-1";
+
+#border{
+	max-width: 30%;
+	position: relative;
+	margin-top: 5%;
+	margin-bottom: 10%;
+	left: 30%;
+}

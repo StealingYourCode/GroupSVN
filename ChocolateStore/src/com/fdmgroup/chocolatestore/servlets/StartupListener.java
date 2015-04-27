@@ -32,6 +32,7 @@ public class StartupListener implements ServletContextListener {
      */
     public void contextInitialized(ServletContextEvent scEvent) {
     	EMFSingleton.getInstance();
+    	scEvent.getServletContext().getDefaultSessionTrackingModes().clear();
     	
     	ProductDAO dao = (ProductDAO) ContextSingleton.getSpring().getBean("ProductDAO");
     	List<Product> productList = dao.readAll();

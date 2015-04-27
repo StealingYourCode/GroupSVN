@@ -101,7 +101,7 @@ public class BusinessLogic {
 
 	}
 
-	public User Register(User user) {
+	public User register(User user) {
 		
 
 		try {

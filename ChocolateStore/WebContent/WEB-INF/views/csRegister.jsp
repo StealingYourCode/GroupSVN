@@ -6,29 +6,38 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/ChocolateStore/resources/css/csRegister.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="/ChocolateStore/resources/javaScript/csRegister.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Register</title>
 </head>
 <body>
 
 	<%@ include file="csHeader.jsp"%>
 
-	<h2>Request</h2>
-	<div id='border'>
-		<sf:form role="form" method="post" modelAttribute="user" action="/register">
+	
+	<div id="border">
+	<h2>Register</h2>
+		<sf:form role="form" method="post" modelAttribute="user" action="registerUser">
 			<div class="form-group">
-				<sf:label path="email">EMAIL</sf:label>
-				<sf:input type="email" path="email" class="form-control" placeholder="PRICE" />
+				<label>EMAIL</label>
+				<sf:input type="email" path="email" class="form-control" placeholder="email address" />
 			</div>
 			<div class="form-group">
-				<sf:label path="password">Password</sf:label>
-				<sf:input type="password" class="form-control" path="password" placeholder="password" />
+				<label>Street Address</label>
+				<sf:input type="text" class="form-control" path="address" placeholder="password" />
 			</div>
 			<div class="form-group">
-				<sf:label path="confirmPassword">Confirm Password</sf:label>
-				<sf:input type="passowrd" class="form-control" path="confirmPassword" placeholder="confirmPassword" />
+				<label>Password</label>
+				<sf:input id="pwd" type="password" class="form-control" path="password" placeholder="password" />
 			</div>
-			<input type="submit" class="btn btn-default" value="Register" />
+			<div class="form-group">
+				<label>Confirm Password</label>
+				<input id="confPwd" type="password" class="form-control" placeholder="confirmPassword" />
+			</div>
+			<input id="submitBtn" type="submit" class="btn btn-default" value="Register" />
 		</sf:form>
 	</div>
 
