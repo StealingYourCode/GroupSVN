@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,9 +15,10 @@
 	<header id="csHeader">
 		<a id="logo" href="csFrontPage"><img alt="CS_LOGO"
 			src="/ChocolateStore/resources/images/logo.jpg" /> </a>
+		<div>${sessionScope.loggedIn.email}</div>
 		<div id="topButtons">
 				<c:choose>
-					<c:when test="${sessionScope.user != null}">
+					<c:when test="${sessionScope.loggedIn != null}">
 						<form action="Login" method="get">
 							<button id="logoutBtn" type="submit"><div class="insideBtn">Logout</div></button>
 						</form>
@@ -28,10 +30,10 @@
 				</c:choose>
 			</div>
 		<a id="cart" href="csCartReview" class="btn btn-info btn-lg"> 
-		<span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart  <div>${cartQty}</div>
+		<span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart  ${cartQty}
 		</a>
 		
 	</header>
 
 </body>
-</html>
+</html> 

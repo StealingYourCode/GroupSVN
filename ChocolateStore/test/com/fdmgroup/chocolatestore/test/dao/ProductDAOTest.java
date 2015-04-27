@@ -22,7 +22,7 @@ public class ProductDAOTest {
 		dao=new ProductDAO();
 	}
 	
-	@Ignore
+//	@Ignore
 	@Test
 	public void testPoductIsCreated() 
 	{
@@ -53,57 +53,57 @@ public class ProductDAOTest {
 		}
 	}
 	
-	@Test
-	public void testProductRead()
-	{
-		Product product;
-		try {
-			product=dao.read(3);
-			assertTrue(product.getProductName().equals("Snickers"));
-		} catch (StorableNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NullInputException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	@Test
-	public void testProductUpdateTest()
-	{
-		Product product = new Product("Fancy", new BigDecimal(90), 100,"this is fancy");
-		Product productupdate = product;
-		productupdate.setStockAmount(50);
-		try {
-			dao.create(product);
-			dao.update(product, productupdate);
-			try {
-				assertTrue(dao.read(11).getStockAmount().equals(50));
-				dao.delete(11);
-				assertTrue(dao.read(11).equals(null));
-			} catch (NullInputException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		} catch (StorableNotFoundException e) {
-			// TODO: handle exception
-		}
-	}
-	
-	@Test 
-	public void testProductDeleteTest(){
-		try {
-			dao.delete(12);
-			assertTrue(dao.read(12).equals(null));
-		} catch (StorableNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NullInputException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//	@Test
+//	public void testProductRead()
+//	{
+//		Product product;
+//		try {
+//			product=dao.read(3);
+//			assertTrue(product.getProductName().equals("Snickers"));
+//		} catch (StorableNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (NullInputException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+//	
+//	@Test
+//	public void testProductUpdateTest()
+//	{
+//		Product product = new Product("Fancy", new BigDecimal(90), 100,"this is fancy");
+//		Product productupdate = product;
+//		productupdate.setStockAmount(50);
+//		try {
+//			dao.create(product);
+//			dao.update(product, productupdate);
+//			try {
+//				assertTrue(dao.read(11).getStockAmount().equals(50));
+//				dao.delete(11);
+//				assertTrue(dao.read(11).equals(null));
+//			} catch (NullInputException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			
+//		} catch (StorableNotFoundException e) {
+//			// TODO: handle exception
+//		}
+//	}
+//	
+//	@Test 
+//	public void testProductDeleteTest(){
+//		try {
+//			dao.delete(12);
+//			assertTrue(dao.read(12).equals(null));
+//		} catch (StorableNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (NullInputException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 	
 }
