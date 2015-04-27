@@ -18,7 +18,7 @@
 		
 		<div id="border">
 		<h2>Login</h2>
-			<form action="process" method="POST" role="form">
+			<form action="LoginUser" method="POST" role="form">
 				<div class="form-group">
 					<label>Email address:</label> 
 					<input type="email"class="form-control" name="email"/>
