@@ -51,7 +51,7 @@ public class BusinessLogic {
 				sale.setUser(userDao.read(username));
 
 				saleDao.create(sale);
-//				psDao.create(setProductSale(product, amount, sale));
+				// psDao.create(setProductSale(product, amount, sale));
 
 			}
 		} catch (StorableNotFoundException e) {
@@ -67,7 +67,6 @@ public class BusinessLogic {
 		productCopy.setProductName(product.getProductName());
 		productCopy.setPrice(product.getPrice());
 		productCopy.setStockAmount(product.getStockAmount());
-		
 
 		return productCopy;
 
@@ -92,17 +91,17 @@ public class BusinessLogic {
 		try {
 			User user = userDao.read(username);
 
-			if (user.getPassword().equals(password))
+			if (!user.getPassword().equals(password))
+				throw new StorableNotFoundException("This user does not exist");
+			else
 				return user;
 		} catch (NoResultException e) {
 			throw new StorableNotFoundException("This user does not exist");
 		}
-		return null;
 
 	}
 
 	public User register(User user) {
-		
 
 		try {
 			userDao.create(user);
