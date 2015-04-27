@@ -23,19 +23,19 @@
 		<sf:form role="form" method="post" modelAttribute="user" action="registerUser">
 			<div class="form-group">
 				<label>EMAIL</label>
-				<sf:input type="email" path="email" class="form-control" placeholder="email address" />
+				<sf:input type="email" path="email" class="form-control" placeholder="Email Address" />
 			</div>
 			<div class="form-group">
 				<label>Street Address</label>
-				<sf:input type="text" class="form-control" path="address" placeholder="password" />
+				<sf:input type="text" class="form-control" path="address" placeholder="Street Address" />
 			</div>
 			<div class="form-group">
 				<label>Password</label>
-				<sf:input id="pwd" type="password" class="form-control" path="password" placeholder="password" />
+				<sf:input id="pwd" type="password" class="form-control" path="password" placeholder="Password" />
 			</div>
 			<div class="form-group">
 				<label>Confirm Password</label>
-				<input id="confPwd" type="password" class="form-control" placeholder="confirmPassword" />
+				<input id="confPwd" type="password" class="form-control" placeholder="Confirm Password" />
 			</div>
 			<input id="submitBtn" type="submit" class="btn btn-default" value="Register" />
 		</sf:form>

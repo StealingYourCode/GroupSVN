@@ -6,37 +6,33 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/ChocolateStore/resources/css/csLogin.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ChocolateStore Login</title>
 </head>
 <body>
 	<%@ include file="csHeader.jsp"%>
 
-	<div id='main'>
+	
+		
+		<div id="border">
 		<h2>Login</h2>
-		<div id='border'>
-			<sf:form action="process" method="POST" modelAttribute="user" role="form">
+			<form action="process" method="POST" role="form">
 				<div class="form-group">
-					<sf:label path="email">Email address:</sf:label> 
-					<sf:input type="email"	class="form-control" path="email"/>
+					<label>Email address:</label> 
+					<input type="email"class="form-control" name="email"/>
 				</div>
 				<div class="form-group">
-					<sf:label path="pwd">Password:</sf:label> 
-					<sf:input type="password" class="form-control" path="pwd"/>
+					<label >Password:</label> 
+					<input type="password" class="form-control" name="password"/>
 				</div>
-				<input type="submit" class="btn btn-default" value="Login" />
-			</sf:form>
+				<input type="submit" class="btn btn-default" value="Login"/>
+			</form>
 		</div>
-	</div>
+	
 
 	<%@ include file="csFooter.jsp"%>
 </body>
 </html>
 
-<sf:form action="process" method="POST" modelAttribute="user">
-	<sf:label path="username"> Username </sf:label>
-	<sf:input type="text" path="username" />
-	<sf:label path="password"> Password </sf:label>
-	<sf:input type="password" path="password" />
-	<input type="submit" value="Submit Registration" />
-</sf:form>

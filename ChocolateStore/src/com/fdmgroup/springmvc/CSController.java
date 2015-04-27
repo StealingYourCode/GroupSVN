@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.ServletContext;
 
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.fdmgroup.chocolatestore.entities.Product;
 import com.fdmgroup.chocolatestore.entities.ProductSale;
 import com.fdmgroup.chocolatestore.entities.User;
+import com.fdmgroup.chocolatestore.exceptions.NullInputException;
+import com.fdmgroup.chocolatestore.exceptions.StorableNotFoundException;
 import com.fdmgroup.chocolatestore.singleton.ContextSingleton;
 
 @Controller
@@ -84,6 +87,26 @@ public class CSController {
 	public String addUser(User user){
 		if (user != null)
 			((BusinessLogic) ContextSingleton.getSpring().getBean("BusinessLogic")).register(user);
+		return "csFrontPage";
+	}
+	
+	@RequestMapping("/csLogin")
+	public String goToLogin() {
+		return "csLogin";
+	}
+	
+	@RequestMapping("/LoginUser")
+	public String loginUser(@RequestParam String email, String password) {
+		try {
+			((BusinessLogic) ContextSingleton.getSpring().getBean("BusinessLogic")).Login(email, password);
+		} catch (NullInputException e) {
+			e.printStackTrace();
+			return "csLogin";
+		} catch (StorableNotFoundException e) {
+			e.printStackTrace();
+			return "csRegister";
+		}
+		
 		return "csFrontPage";
 	}
 
