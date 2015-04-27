@@ -9,7 +9,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/ChocolateStore/resources/css/csHeader.css" >
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Header</title>
 </head>
 <body>
 	<header id="csHeader">
@@ -20,7 +20,7 @@
 					<c:when test="${sessionScope.loggedIn != null}">
 						<form action="Login" method="get">
 						${sessionScope.loggedIn.email}
-							<button id="logoutBtn" type="submit"><div class="insideBtn">Logout</div></button>
+							<a href="logout"><button id="logoutBtn" type="submit"><div class="insideBtn">Logout</div></button></a>
 						</form>
 					</c:when>
 					<c:otherwise>

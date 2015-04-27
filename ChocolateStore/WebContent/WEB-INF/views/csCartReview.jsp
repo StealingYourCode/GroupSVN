@@ -7,37 +7,36 @@
 <html>
 <head>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/ChocolateStore/resources/css/csCartReview.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
 	<%@ include file="csHeader.jsp"%>
 
-
-	<div class="container">
-
-		<table class="table">
-			<thead>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Product</th>
+				<th>Quantity</th>
+				<th>Remove</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="product" items="${sessionScope.saleList}">
 				<tr>
-					<th>Product</th>
-					<th>Quantity</th>
-					<th>Remove</th>
+
+					<td>${product.product.productName}</td>
+					<td>${product.quantity}</td>
+					<td><a href="removeProduct"><button class="btn">Remove</button></a></td>
+
 				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<c:forEach var="product" items="${sessionScope.saleList}">
-						<td>${product.product.productName}</td>
-						<td>${product.quantity}</td>
-						<td>Remove</td>
-					</c:forEach>
-				</tr>
+			</c:forEach>
 
-			</tbody>
-		</table>
-	</div>
+		</tbody>
+	</table>
 
-
+	<div id="checkout"><a href="purchase"><button class="btn btn-info" >Checkout!</button></a></div>
 
 	<%@ include file="csFooter.jsp"%>
 </body>

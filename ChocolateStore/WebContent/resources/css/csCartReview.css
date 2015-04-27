@@ -1,0 +1,18 @@
+@CHARSET "ISO-8859-1";
+
+td {
+	color: blue;
+	font-weight: bolder;
+}
+
+.table{
+	position: relative;
+	max-width: 60%;
+	left: 10%;
+	margin-bottom: 5%;
+}
+
+#checkout{
+	position: relative;
+	left: 50%;
+}

@@ -1,17 +1,20 @@
 package com.fdmgroup.springmvc;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.swing.text.html.FormSubmitEvent.MethodType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -41,7 +44,7 @@ public class CSController {
 		Map<String, Object> modelMap = model.asMap();
 		List<ProductSale> saleList = (List<ProductSale>) modelMap.get("saleList");
 		if ( saleList == null);
-			saleList = (List<ProductSale>) ContextSingleton.getSpring().getBean("psList");
+			saleList = new ArrayList<ProductSale>();//(List<ProductSale>) ContextSingleton.getSpring().getBean("psList");
 		return saleList;
 	}
 	
@@ -49,7 +52,7 @@ public class CSController {
 	public String addToCart(@RequestParam String candy, Model model) {
 		Map<String, Object> modelMap = model.asMap();
 		List<ProductSale> saleList = (List<ProductSale>) modelMap.get("saleList");
-		ProductSale ps = (ProductSale) ContextSingleton.getSpring().getBean("ProductSale");
+		ProductSale ps = new ProductSale();//(ProductSale) ContextSingleton.getSpring().getBean("ProductSale");
 		List<Product> productList = (List<Product>) context.getAttribute("productList");
 		for(ProductSale proSale : saleList){ 
 			if (proSale.getProduct().getProductName().equals(candy)){
@@ -86,9 +89,10 @@ public class CSController {
 	}
 	
 	@RequestMapping("/registerUser")
+	@ModelAttribute("loggedIn")
 	public String addUser(User user){
 		if (user != null)
-			((BusinessLogic) ContextSingleton.getSpring().getBean("BusinessLogic")).register(user);
+			new BusinessLogic().register(user);//((BusinessLogic) ContextSingleton.getSpring().getBean("BusinessLogic")).register(user);
 		return "csFrontPage";
 	}
 	
@@ -97,11 +101,17 @@ public class CSController {
 		return "csLogin";
 	}
 	
-	@RequestMapping("/LoginUser")
+	@RequestMapping(value="/LoginUser")
 	public String loginUser(@RequestParam String email, @RequestParam String password, Model model) {
+		System.out.println("Logging in");
 		try {
-			User user = ((BusinessLogic) ContextSingleton.getSpring().getBean("BusinessLogic")).Login(email, password);
+			System.out.println("attemting to create");
+			BusinessLogic bizLog = new BusinessLogic();
+			System.out.println("before");
+			User user = bizLog.login(email, password);//((BusinessLogic) ContextSingleton.getSpring().getBean("BusinessLogic")).Login(email, password);
+			System.out.println("created user");
 			model.addAttribute("loggedIn", user);
+			System.out.println("added user");
 		} catch (NullInputException e) {
 			e.printStackTrace();
 			return "csLogin";
@@ -130,14 +140,22 @@ public class CSController {
 	
 	@RequestMapping("/purchase")
 	public String makePurchase(Model model) {
-		BusinessLogic bizLog = ((BusinessLogic) ContextSingleton.getSpring().getBean("BusinessLogic"));
+		BusinessLogic bizLog = new BusinessLogic();//((BusinessLogic) ContextSingleton.getSpring().getBean("BusinessLogic"));
 		Map<String, Object> modelMap = model.asMap();
 		List<ProductSale> purchaseList = (List<ProductSale>) modelMap.get("saleList");
 		for (ProductSale proSale : purchaseList) {
-			bizLog.purchase(proSale.getProduct().getProductName(), proSale.getQuantity(), ((User)modelMap.get("loggedIn")).getEmail());
+			try {
+				bizLog.purchase(proSale.getProduct().getProductName(), proSale.getQuantity(), ((User)modelMap.get("loggedIn")).getEmail());
+			} catch (NullInputException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		modelMap.remove("saleList");
 		return "csSuccess";
 	}
+	
+	
 
 
 }

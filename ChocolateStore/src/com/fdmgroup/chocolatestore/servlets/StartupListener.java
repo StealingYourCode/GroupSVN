@@ -22,7 +22,6 @@ public class StartupListener implements ServletContextListener {
      * Default constructor. 
      */
 	
-	
     public StartupListener() {
         // TODO Auto-generated constructor stub
     }
@@ -31,22 +30,25 @@ public class StartupListener implements ServletContextListener {
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
     public void contextInitialized(ServletContextEvent scEvent) {
-    	System.out.println("got here");
+    	
+    	scEvent.getServletContext().getDefaultSessionTrackingModes().clear();
     	EMFSingleton.getInstance();
+    	System.out.println("one");
     	
-    	//scEvent.getServletContext().getDefaultSessionTrackingModes().clear();
-    	
-    	ProductDAO dao = (ProductDAO) ContextSingleton.getSpring().getBean("ProductDAO");
+    	ProductDAO dao = new ProductDAO();//(ProductDAO) ContextSingleton.getSpring().getBean("ProductDAO");
+    	System.out.println("two");
     	List<Product> productList = dao.readAll();
+    	System.out.println("three");
     	scEvent.getServletContext().setAttribute("productList", productList);
-    	
+    	System.out.println("four");
     }
 
 	/**
      * @see ServletContextListener#contextDestroyed(ServletContextEvent)
      */
-    public void contextDestroyed(ServletContextEvent arg0) {
+    public void contextDestroyed(ServletContextEvent scEvent) {
         EMFSingleton.getInstance().close();
+        scEvent.getServletContext().getDefaultSessionTrackingModes().clear();
     }
 	
 }

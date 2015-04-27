@@ -23,7 +23,7 @@ public class UserDAOTest {
 		
 		user = new User();
 		user.setPassword("password");
-		user.setEmail("email@email.com");
+		user.setEmail("other@email.com");
 		user.setAddress("123 Some Street");
 	
 		assertTrue(dao.create(user) instanceof User);
