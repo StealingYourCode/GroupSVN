@@ -15,11 +15,11 @@
 	<header id="csHeader">
 		<a id="logo" href="csFrontPage"><img alt="CS_LOGO"
 			src="/ChocolateStore/resources/images/logo.jpg" /> </a>
-		<div>${sessionScope.loggedIn.email}</div>
-		<div id="topButtons">
+				<div id="topButtons">
 				<c:choose>
 					<c:when test="${sessionScope.loggedIn != null}">
 						<form action="Login" method="get">
+						${sessionScope.loggedIn.email}
 							<button id="logoutBtn" type="submit"><div class="insideBtn">Logout</div></button>
 						</form>
 					</c:when>
