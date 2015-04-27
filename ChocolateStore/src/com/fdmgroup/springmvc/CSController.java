@@ -113,6 +113,17 @@ public class CSController {
 	public String goToCart() {
 		return "csCartReview";
 	}
+	
+	@RequestMapping("/purchase")
+	public String makePurchase(Model model) {
+		BusinessLogic bizLog = ((BusinessLogic) ContextSingleton.getSpring().getBean("BusinessLogic"));
+		Map<String, Object> modelMap = model.asMap();
+		List<ProductSale> purchaseList = (List<ProductSale>) modelMap.get("saleList");
+		for (ProductSale proSale : purchaseList) {
+			bizLog.purchase(proSale.getProduct().getProductName(), proSale.getQuantity(), ((User)modelMap.get("loggedIn")).getEmail());
+		}
+		return "csSuccess";
+	}
 
 }
 

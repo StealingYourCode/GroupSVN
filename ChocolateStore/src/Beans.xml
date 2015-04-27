@@ -20,7 +20,7 @@
 	<bean id="SaleDAO" class="com.fdmgroup.chocolatestore.dao.SaleDAO" scope="prototype"/>
 	<bean id="UserDAO" class="com.fdmgroup.chocolatestore.dao.UserDAO" scope="prototype"/>
 	<bean id ="ProductSaleDAO" class="com.fdmgroup.chocolatestore.dao.ProductSaleDAO" scope="prototype"/>
-	<bean id="BusinessLogic" class="com.fdmgroup.springmvc.BusinessLogic" scope="prototype"/>
+	<bean id="BusinessLogic" class="com.fdmgroup.springmvc.BusinessLogic"/>
 	
 	<bean id="User" class="com.fdmgroup.chocolatestore.entities.User" scope="prototype"/>
 	<bean id="Product" class="com.fdmgroup.chocolatestore.entities.Product" scope="prototype"/>

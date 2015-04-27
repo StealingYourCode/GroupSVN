@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -13,7 +13,31 @@
 <body>
 	<%@ include file="csHeader.jsp"%>
 
-			
+
+	<div class="container">
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Product</th>
+					<th>Quantity</th>
+					<th>Remove</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<c:forEach var="product" items="${sessionScope.saleList}">
+						<td>${product.product.productName}</td>
+						<td>${product.quantity}</td>
+						<td>Remove</td>
+					</c:forEach>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+
+
 
 	<%@ include file="csFooter.jsp"%>
 </body>
