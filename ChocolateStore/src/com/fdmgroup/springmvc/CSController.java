@@ -22,7 +22,7 @@ import com.fdmgroup.chocolatestore.exceptions.StorableNotFoundException;
 import com.fdmgroup.chocolatestore.singleton.ContextSingleton;
 
 @Controller
-@SessionAttributes(value={"saleList"})
+@SessionAttributes(value={"saleList", "loggedIn"})
 public class CSController {
 
 	@Autowired
@@ -96,9 +96,10 @@ public class CSController {
 	}
 	
 	@RequestMapping("/LoginUser")
-	public String loginUser(@RequestParam String email, String password) {
+	public String loginUser(@RequestParam String email, @RequestParam String password, Model model) {
 		try {
-			((BusinessLogic) ContextSingleton.getSpring().getBean("BusinessLogic")).Login(email, password);
+			User user = ((BusinessLogic) ContextSingleton.getSpring().getBean("BusinessLogic")).Login(email, password);
+			model.addAttribute("loggedIn", user);
 		} catch (NullInputException e) {
 			e.printStackTrace();
 			return "csLogin";
@@ -106,7 +107,6 @@ public class CSController {
 			e.printStackTrace();
 			return "csRegister";
 		}
-		
 		return "csFrontPage";
 	}
 	
