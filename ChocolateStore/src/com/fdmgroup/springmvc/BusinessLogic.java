@@ -29,7 +29,7 @@ public class BusinessLogic {
 	SaleDAO saleDao = (SaleDAO) context.getBean("SaleDAO");
 	ProductSaleDAO psDao = (ProductSaleDAO) context.getBean("ProductSaleDAO");
 
-	public synchronized void updateInventory(String name, int amount,
+	public synchronized void purchase(String name, int amount,
 			String username) throws NullInputException {
 
 		if (amount < 0) {

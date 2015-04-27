@@ -24,7 +24,7 @@ public class BusinessLogicTests {
 	public void testAfterPurchaseInventory(){
 
 		try {
-		bl.updateInventory("Snickers", 5, "email@email.com");
+		bl.purchase("Snickers", 5, "email@email.com");
 		
 			assertTrue(dao.read(3).getStockAmount()==25);
 		} catch (StorableNotFoundException e) {
