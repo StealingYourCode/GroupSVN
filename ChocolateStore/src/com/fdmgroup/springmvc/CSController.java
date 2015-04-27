@@ -109,6 +109,11 @@ public class CSController {
 		
 		return "csFrontPage";
 	}
+	
+	@RequestMapping("/csCartReview")
+	public String goToCart() {
+		return "csCartReview";
+	}
 
 }
 

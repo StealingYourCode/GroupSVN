@@ -20,3 +20,19 @@ p {
 	font-weight: bold;
 	color: red;
 }
+
+#topButtons{
+	position: absolute;
+	right: 11%;
+	top: 5%;
+}
+
+#topButtons button{
+	background-color: #FAFAFA;
+	border-style: solid;
+	border-width: thin;
+	border-color: #B8B8B8;	
+	border-radius: 7px;
+	font-size: small;
+	color: black;
+}
