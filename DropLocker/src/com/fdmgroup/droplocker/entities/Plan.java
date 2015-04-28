@@ -15,34 +15,34 @@ public class Plan implements Serializable {
 
 	   
 	@Id
-	private Integer PlanId;
-	private String PlanName;
-	private Integer FilesAllowed;
+	private Integer planId;
+	private String planName;
+	private Integer filesAllowed;
 	private static final long serialVersionUID = 1L;
 
 	public Plan() {
 		super();
 	}   
 	public Integer getPlanId() {
-		return this.PlanId;
+		return this.planId;
 	}
 
-	public void setPlanId(Integer PlanId) {
-		this.PlanId = PlanId;
+	public void setPlanId(Integer planId) {
+		this.planId = planId;
 	}   
 	public String getPlanName() {
-		return this.PlanName;
+		return this.planName;
 	}
 
-	public void setPlanName(String PlanName) {
-		this.PlanName = PlanName;
+	public void setPlanName(String planName) {
+		this.planName = planName;
 	}   
 	public Integer getFilesAllowed() {
-		return this.FilesAllowed;
+		return this.filesAllowed;
 	}
 
-	public void setFilesAllowed(Integer FilesAllowed) {
-		this.FilesAllowed = FilesAllowed;
+	public void setFilesAllowed(Integer filesAllowed) {
+		this.filesAllowed = filesAllowed;
 	}
    
 }
