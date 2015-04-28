@@ -1,6 +1,11 @@
 @CHARSET "ISO-8859-1";
 
 #topButtons{
-	float: right;
-	color: red;
+	position: absolute;
+	
+	top: 5%;
+}
+
+#loginButton{
+	right:20%;
 }
