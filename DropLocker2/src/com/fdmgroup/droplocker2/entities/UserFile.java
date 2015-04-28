@@ -3,6 +3,7 @@ package com.fdmgroup.droplocker2.entities;
 import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
+
 import javax.persistence.*;
 
 /**
@@ -16,8 +17,11 @@ public class UserFile implements Serializable {
 
 	   
 	@Id
-	private Integer userId;   
+	@Column(name="USER_ID")
+	private Integer userId;
+	
 	@Id
+	@Column(name="FILE_NAME")
 	private String fileName;
 	private static final long serialVersionUID = 1L;
 

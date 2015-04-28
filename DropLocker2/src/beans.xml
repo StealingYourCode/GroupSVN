@@ -21,6 +21,31 @@
 	<bean id="PlanDAO" class="com.fdmgroup.droplocker2.dao.PlanDAO" scope="prototype"/>
 	<bean id="UserFileDAO" class="com.fdmgroup.droplocker2.dao.UserFileDAO" scope="prototype"/>
 
+	<bean id="bronze" class="com.fdmgroup.droplocker2.entities.Plan">
+		<property name="planName" value="Bronze"></property>
+		<property name="filesAllowed" value="2"></property>
+	</bean>
+	
+	<bean id="silver" class="com.fdmgroup.droplocker2.entities.Plan">
+		<property name="planName" value="Silver"></property>
+		<property name="filesAllowed" value="5"></property>
+	</bean>
+	
+	<bean id="gold" class="com.fdmgroup.droplocker2.entities.Plan">
+		<property name="planName" value="Gold"></property>
+		<property name="filesAllowed" value="20"></property>
+	</bean>
+	
+	<bean id="unlimited" class="com.fdmgroup.droplocker2.entities.Plan">
+		<property name="planName" value="Unlimited"></property>
+		<property name="filesAllowed" value="0"></property>
+	</bean>
+	
+	<bean id="enterprise" class="com.fdmgroup.droplocker2.entities.Plan">
+		<property name="planName" value="Enterprise"></property>
+		<property name="filesAllowed" value="0"></property>
+	</bean>
+	
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 	
 	<aop:config>

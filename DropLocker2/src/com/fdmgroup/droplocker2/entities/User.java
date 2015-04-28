@@ -1,9 +1,11 @@
 package com.fdmgroup.droplocker2.entities;
 
 import com.fdmgroup.droplocker2.entities.Plan;
+
 import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
+
 import javax.persistence.*;
 
 /**
@@ -16,8 +18,12 @@ public class User implements Serializable {
 
 	   
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="USER_ID_SEQ")
+	@SequenceGenerator(name="USER_ID_SEQ", sequenceName="USER_ID_SEQ")
+	@Column(name="USER_ID")
 	private Integer userId;
 	
+	@Column(unique=true)
 	private String username;
 	
 	private String password;
@@ -31,6 +37,10 @@ public class User implements Serializable {
 	public User() {
 		super();
 	}   
+	public User(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
 	public Integer getUserId() {
 		return this.userId;
 	}
