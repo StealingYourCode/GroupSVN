@@ -16,7 +16,10 @@
 	<context:annotation-config />
 	
 	<!-- Beans -->
-	<bean id="UserDAO" class="com.fdmgroup.droplocker.dao.UserDAO" scope="prototype"/>
+	
+	<bean id="UserDAO" class="com.fdmgroup.droplocker2.dao.UserDAO" scope="prototype"/>
+	<bean id="PlanDAO" class="com.fdmgroup.droplocker2.dao.PlanDAO" scope="prototype"/>
+	<bean id="UserFileDAO" class="com.fdmgroup.droplocker2.dao.UserFileDAO" scope="prototype"/>
 
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 	
