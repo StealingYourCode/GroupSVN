@@ -13,8 +13,7 @@
 </head>
 <body>
 	<%@ include file="csHeader.jsp"%>
-
-	<table class="table">
+		<table class="table">
 		<thead>
 			<tr>
 				<th>Product</th>
@@ -25,11 +24,12 @@
 		<tbody>
 			<c:forEach var="product" items="${sessionScope.saleList}">
 				<tr>
-
+				
 					<td>${product.product.productName}</td>
 					<td>${product.quantity}</td>
-					<td><a href="removeProduct"><button class="btn">Remove</button></a></td>
-
+					<td><form action="remove" method="GET">	
+				<input name="candy" value="${product.product.productName}" hidden="true" /><button class="btn">Remove</button></form></td>
+				
 				</tr>
 			</c:forEach>
 
@@ -37,6 +37,13 @@
 	</table>
 
 	<div id="checkout"><a href="purchase"><button class="btn btn-info" >Checkout!</button></a></div>
+		
+	<div class="jumbotron">
+    <h1>${success} </h1> 
+    <p>${zero}</p>     
+    
+  </div>	
+			
 
 	<%@ include file="csFooter.jsp"%>
 </body>

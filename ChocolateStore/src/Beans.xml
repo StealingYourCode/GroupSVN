@@ -27,7 +27,7 @@
 	<bean id="ProductSale" class="com.fdmgroup.chocolatestore.entities.ProductSale" scope="prototype"/>
 	<bean id="Sale" class="com.fdmgroup.chocolatestore.entities.Sale" scope="prototype"/>
 	
-	<bean id="psList" class="java.util.ArrayList" scope="prototype"/>
+	<bean id="psList" class="java.util.ArrayList"/>
 
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 	

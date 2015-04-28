@@ -1,16 +1,17 @@
 package com.fdmgroup.chocolatestore.test.businesslogic;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
+
+import javax.transaction.Transactional;
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
-import org.springframework.ui.Model;
 
 import com.fdmgroup.chocolatestore.dao.ProductDAO;
+import com.fdmgroup.chocolatestore.entities.User;
 import com.fdmgroup.chocolatestore.exceptions.NullInputException;
 import com.fdmgroup.chocolatestore.exceptions.StorableNotFoundException;
 import com.fdmgroup.chocolatestore.singleton.ContextSingleton;
 import com.fdmgroup.springmvc.BusinessLogic;
-import com.fdmgroup.springmvc.CSController;
 
 
 public class BusinessLogicTests {
@@ -18,8 +19,6 @@ public class BusinessLogicTests {
 
 	BusinessLogic bl = new BusinessLogic();//(BusinessLogic) context.getBean("BusinessLogic");
 	ProductDAO dao =  new ProductDAO();//(ProductDAO) context.getBean("ProductDAO");
-	CSController cs = new CSController();
-	
 
 	@Test
 	public void testAfterPurchaseInventory(){
@@ -72,5 +71,4 @@ public class BusinessLogicTests {
 //	public void testRegister(){
 //		bl.Register("Louis", "password");
 //	}
-	
 }
