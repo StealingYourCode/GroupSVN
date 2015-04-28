@@ -15,8 +15,6 @@ public class UserDAO extends Storage<User, Integer> {
 	@Override
 	public User create(User user) throws StorableNotFoundException,
 			StorableNullException {
-		em = emf.createEntityManager();
-
 		if (user != null) {
 			em = emf.createEntityManager();
 			em.getTransaction().begin();
@@ -26,7 +24,7 @@ public class UserDAO extends Storage<User, Integer> {
 			return user;
 		}
 		throw new StorableNullException(
-				"Attempted to create user of Null value");
+				"Attempted to create user of null value");
 	}
 
 	@Override
@@ -66,7 +64,7 @@ public class UserDAO extends Storage<User, Integer> {
 			result.setUsername(newUser.getUsername());
 			result.setUserPlan(newUser.getUserPlan());
 			em.close();
-			return newUser;
+			return result;
 		} else
 			throw new StorableNotFoundException(oldUser
 					+ " was not found in our database");
