@@ -13,9 +13,6 @@
 <body>
 <h1>Welcome to DropLocker</h1>
 
-<div id="topButtons">
-<button type="submit" name="loginButton">Login</button>
-<button type="submit" name="registerButton">Register</button>
-</div>
+<%@ include file="Header.jsp" %>
 </body>
 </html>
