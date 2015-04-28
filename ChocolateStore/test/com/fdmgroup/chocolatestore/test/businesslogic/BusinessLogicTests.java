@@ -20,38 +20,38 @@ public class BusinessLogicTests {
 	BusinessLogic bl = new BusinessLogic();//(BusinessLogic) context.getBean("BusinessLogic");
 	ProductDAO dao =  new ProductDAO();//(ProductDAO) context.getBean("ProductDAO");
 
-	@Test
-	public void testAfterPurchaseInventory(){
-
-		try {
-		bl.purchase("Snickers", 5, "email@email.com");
-		
-			assertTrue(dao.read(3).getStockAmount()==25);
-		} catch (StorableNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NullInputException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		
-	}
-	}
-	
 //	@Test
-//	public void loginTest(){
-//		
+//	public void testAfterPurchaseInventory(){
+//
 //		try {
-//			User user= bl.Login("email@email.com", "password");
-//			assertTrue(user.getUserId()==1100);
-//		} catch (NullInputException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
+//		bl.purchase("Snickers", 5, "email@email.com");
+//		
+//			assertTrue(dao.read(3).getStockAmount()==25);
 //		} catch (StorableNotFoundException e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
-//		}
+//		} catch (NullInputException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
 //		
 //	}
+//	}
+	
+	@Test
+	public void loginTest(){
+		
+		try {
+			User user= bl.login("email@email.com", "password");
+			assertTrue(user.getUserId()==50);
+		} catch (NullInputException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (StorableNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 //	
 //	@Test
 //	(expected=StorableNotFoundException.class)
