@@ -14,7 +14,7 @@ public class EntityManagerFactorySingleton {
 		public static EntityManagerFactory getInstance(){
 			
 			if(instance==null)
-				instance = Persistence.createEntityManagerFactory("ChocolateStore");
+				instance = Persistence.createEntityManagerFactory("DropLocker2");
 			
 			return instance;
 			

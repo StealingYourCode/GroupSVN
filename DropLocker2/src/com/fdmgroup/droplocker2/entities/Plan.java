@@ -25,6 +25,7 @@ public class Plan implements Serializable {
 	@Column(name="FILES_ALLOWED")
 	private Integer filesAllowed;
 	
+	
 	private static final long serialVersionUID = 1L;
 	
 	public Plan(Integer id, String planName, Integer filesAllowed) {
@@ -57,5 +58,6 @@ public class Plan implements Serializable {
 	public void setFilesAllowed(Integer filesAllowed) {
 		this.filesAllowed = filesAllowed;
 	}
+
    
 }

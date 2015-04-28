@@ -1,12 +1,15 @@
 package com.fdmgroup.droplocker2.entities;
 
-import com.fdmgroup.droplocker2.entities.Plan;
-
 import java.io.Serializable;
-import java.lang.Integer;
-import java.lang.String;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 
 /**
  * Entity implementation class for Entity: User
@@ -14,7 +17,7 @@ import javax.persistence.*;
  */
 @Entity
 
-public class User implements Serializable {
+public class Customer implements Serializable {
 
 	   
 	@Id
@@ -29,15 +32,15 @@ public class User implements Serializable {
 	private String password;
 	
 	@ManyToOne
-	@JoinColumn(name = "planId")
-	private Plan userPlan;
+	@JoinColumn(name = "accountId")
+	private Account userAccount;
 	
 	private static final long serialVersionUID = 1L;
 
-	public User() {
+	public Customer() {
 		super();
 	}   
-	public User(String username, String password) {
+	public Customer(String username, String password) {
 		this.username = username;
 		this.password = password;
 	}
@@ -61,13 +64,14 @@ public class User implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}   
-	public Plan getUserPlan() {
-		return this.userPlan;
 	}
-
-	public void setUserPlan(Plan userPlan) {
-		this.userPlan = userPlan;
+	public Account getUserAccount() {
+		return userAccount;
 	}
+	public void setUserAccount(Account userAccount) {
+		this.userAccount = userAccount;
+	}
+	
+	
    
 }

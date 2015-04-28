@@ -4,16 +4,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
-import com.fdmgroup.droplocker2.entities.User;
+import com.fdmgroup.droplocker2.entities.Customer;
 import com.fdmgroup.droplocker2.exceptions.StorableNotFoundException;
 import com.fdmgroup.droplocker2.exceptions.StorableNullException;
 
-public class UserDAO extends Storage<User, Integer> {
+public class UserDAO extends Storage<Customer, Integer> {
 
 	EntityManager em;
 
 	@Override
-	public User create(User user) throws StorableNotFoundException,
+	public Customer create(Customer user) throws StorableNotFoundException,
 			StorableNullException {
 		if (user != null) {
 			em = emf.createEntityManager();
@@ -28,22 +28,22 @@ public class UserDAO extends Storage<User, Integer> {
 	}
 
 	@Override
-	public User read(Integer ID) throws StorableNotFoundException {
+	public Customer read(Integer ID) throws StorableNotFoundException {
 
 		em = emf.createEntityManager();
-		User user = em.find(User.class, ID);
+		Customer user = em.find(Customer.class, ID);
 		em.close();
 		return user;
 	}
 
-	public User read(String username) throws StorableNotFoundException {
+	public Customer read(String username) throws StorableNotFoundException {
 		em = emf.createEntityManager();
 		Query query = em.createNativeQuery(
 				"select * from user where username = '" + username + "'",
-				User.class);
-		User user;
+				Customer.class);
+		Customer user;
 		try {
-			user = (User) query.getSingleResult();
+			user = (Customer) query.getSingleResult();
 			return user;
 		} catch (NoResultException e) {
 			e.printStackTrace();
@@ -54,15 +54,15 @@ public class UserDAO extends Storage<User, Integer> {
 	}
 
 	@Override
-	public User update(User oldUser, User newUser)
+	public Customer update(Customer oldUser, Customer newUser)
 			throws StorableNotFoundException {
 		em = emf.createEntityManager();
 		if (oldUser != null && newUser != null) {
 			em.getTransaction().begin();
-			User result = em.find(User.class, oldUser.getUserId());
+			Customer result = em.find(Customer.class, oldUser.getUserId());
 			result.setPassword(newUser.getPassword());
 			result.setUsername(newUser.getUsername());
-			result.setUserPlan(newUser.getUserPlan());
+			result.setUserAccount(newUser.getUserAccount());
 			em.close();
 			return result;
 		} else
@@ -74,7 +74,7 @@ public class UserDAO extends Storage<User, Integer> {
 	public void delete(Integer ID) throws StorableNotFoundException {
 		em = emf.createEntityManager();
 		em.getTransaction().begin();
-		em.remove(em.find(User.class, ID));
+		em.remove(em.find(Customer.class, ID));
 		em.getTransaction().commit();
 		em.close();
 	}

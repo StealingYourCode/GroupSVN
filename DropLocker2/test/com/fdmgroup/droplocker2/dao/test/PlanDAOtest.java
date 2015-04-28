@@ -1,7 +1,5 @@
 package com.fdmgroup.droplocker2.dao.test;
 
-import static org.junit.Assert.*;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -9,7 +7,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.fdmgroup.droplocker2.businesslogic.BeanSingleton;
+import com.fdmgroup.droplocker2.dao.Storage;
 import com.fdmgroup.droplocker2.entities.Plan;
+import com.fdmgroup.droplocker2.exceptions.StorableNotFoundException;
+import com.fdmgroup.droplocker2.exceptions.StorableNullException;
 
 public class PlanDAOtest {
 	
@@ -36,8 +37,8 @@ public class PlanDAOtest {
 	}
 
 	@Test
-	public void testCreatePlan() {
-		dao = beans.getSpring().getBean("PlanDAO");
+	public void testCreatePlan() throws StorableNotFoundException, StorableNullException {
+		dao = (Storage) beans.getSpring().getBean("PlanDAO");
 		dao.create(plan1);
 	}
 

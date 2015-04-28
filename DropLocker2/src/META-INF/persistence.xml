@@ -4,8 +4,9 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="DropLocker2">
 		<class>com.fdmgroup.droplocker2.entities.Plan</class>
-		<class>com.fdmgroup.droplocker2.entities.User</class>
-		<class>com.fdmgroup.droplocker2.entities.UserFile</class>
+		<class>com.fdmgroup.droplocker2.entities.Customer</class>
+		<class>com.fdmgroup.droplocker2.entities.AccountFile</class>
+		<class>com.fdmgroup.droplocker2.entities.Account</class>
 
 		<properties>
 
@@ -28,7 +29,7 @@
 			<property name="hibernate.connection.password" value="Oracle101" />
 
 			<!-- validate, create, create-drop, update -->
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.hbm2ddl.auto" value="validate" />
 
 			<!-- Connection pooling config -->
 			<property name="hibernate.c3p0.min_size" value="2" />
