@@ -2,46 +2,46 @@ package com.fdmgroup.droplocker2.dao;
 
 import javax.persistence.EntityManager;
 
-import com.fdmgroup.droplocker2.entities.UserFile;
+import com.fdmgroup.droplocker2.entities.AccountFile;
 import com.fdmgroup.droplocker2.exceptions.StorableNotFoundException;
 import com.fdmgroup.droplocker2.exceptions.StorableNullException;
 
-public class UserFileDAO extends Storage<UserFile, Integer> {
+public class AccountFileDAO extends Storage<AccountFile, Integer> {
 
 	EntityManager em;
 
 	@Override
-	public UserFile create(UserFile userFile) throws StorableNotFoundException,
+	public AccountFile create(AccountFile accountFile) throws StorableNotFoundException,
 			StorableNullException {
-		if (userFile != null) {
+		if (accountFile != null) {
 			em = emf.createEntityManager();
 			em.getTransaction().begin();
-			em.persist(userFile);
+			em.persist(accountFile);
 			em.getTransaction().commit();
 			em.close();
-			return userFile;
+			return accountFile;
 		}
 		throw new StorableNullException(
 				"Attempted to create User File of null value");
 	}
 
 	@Override
-	public UserFile read(Integer ID) throws StorableNotFoundException {
+	public AccountFile read(Integer ID) throws StorableNotFoundException {
 		em = emf.createEntityManager();
-		UserFile userfile = em.find(UserFile.class, ID);
+		AccountFile userfile = em.find(AccountFile.class, ID);
 		em.close();
 		return userfile;
 	}
 
 	@Override
-	public UserFile update(UserFile oldUserFile, UserFile newUserFile)
+	public AccountFile update(AccountFile oldUserFile, AccountFile newUserFile)
 			throws StorableNotFoundException {
 		em = emf.createEntityManager();
 		if (oldUserFile != null && newUserFile != null) {
 			em.getTransaction().begin();
-			UserFile result = em.find(UserFile.class, oldUserFile.getUserId());
+			AccountFile result = em.find(AccountFile.class, oldUserFile.getAccountId());
 			result.setFileName(newUserFile.getFileName());
-			result.setUserId(newUserFile.getUserId());
+			result.setAccountId(newUserFile.getAccountId());
 			em.close();
 			return result;
 		} else
@@ -53,7 +53,7 @@ public class UserFileDAO extends Storage<UserFile, Integer> {
 	public void delete(Integer ID) throws StorableNotFoundException {
 		em = emf.createEntityManager();
 		em.getTransaction().begin();
-		em.remove(em.find(UserFile.class, ID));
+		em.remove(em.find(AccountFile.class, ID));
 		em.getTransaction().commit();
 		em.close();
 

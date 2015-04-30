@@ -8,7 +8,7 @@ import com.fdmgroup.droplocker2.entities.Customer;
 import com.fdmgroup.droplocker2.exceptions.StorableNotFoundException;
 import com.fdmgroup.droplocker2.exceptions.StorableNullException;
 
-public class UserDAO extends Storage<Customer, Integer> {
+public class CustomerDAO extends Storage<Customer, Integer> {
 
 	EntityManager em;
 
